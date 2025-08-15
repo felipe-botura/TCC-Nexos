@@ -1,0 +1,114 @@
+@{
+    ViewData["Title"] = "Mesas Disponíveis";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // opcional se já estiver em _ViewStart.cshtml
+}
+
+<main role="main" class="container py-4">
+    <section class="main-header1 mb-4" aria-labelledby="main-title">
+      <h1 id="main-title" class="mb-2">Descubra campanhas e Mesas disponíveis</h1>
+      <p class="mb-3">Encontre uma campanha sem igual para jogar RPG. Explore campanhas, mesas e one-shots aqui mesmo!</p>
+      <a class="border-btn btn" href="@Url.Action("Create","Mesas")" role="button" aria-label="Criar nova campanha">Criar Campanha</a>
+    </section>
+
+    <section class="filters mb-4" aria-label="Filtros para pesquisa de campanhas">
+      <div class="row g-3">
+        <div class="col-sm-6 col-md-3">
+          <div class="filter-box p-3 border rounded" tabindex="0" aria-label="Filtro de gêneros">
+            <strong>Gênero</strong>
+            <div class="small">Fantasia · Horror · Sci-fi · Mistério</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="filter-box p-3 border rounded" tabindex="0" aria-label="Filtro de sistemas">
+            <strong>Sistema</strong>
+            <div class="small">D&D · Pathfinder · Call of Cthulhu</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="filter-box p-3 border rounded" tabindex="0" aria-label="Filtro de modalidade">
+            <strong>Modalidade</strong>
+            <div class="small">Online · Presencial</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <div class="filter-box p-3 border rounded" tabindex="0" aria-label="Filtro de categoria">
+            <strong>Categoria</strong>
+            <div class="small">One-shot · Campanha</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="campaigns-grid" aria-label="Campanhas disponíveis para jogar">
+      <div class="row gx-4 gy-4">
+        <!-- Card 1 -->
+        <div class="col-lg-4 col-md-6">
+          <article class="card h-100">
+            <div class="card-img position-relative">
+              <img
+                src="@(Url.Content("~/img/campaigns/placeholder2.png"))"
+                alt="Capa da campanha O Princípio"
+                class="img-fluid w-100"
+                onerror="this.src='(Url.Content(\"~/img/campaigns/placeholder2.png\"))';" />
+              <span class="badge bg-primary position-absolute" style="top:8px; left:8px;">Fantasia</span>
+            </div>
+            <div class="card-body p-3">
+              <h5 class="card-title mb-1">O Princípio</h5>
+              <p class="card-text small mb-0">Mestre: Hemi Domiciano • Players: 5</p>
+            </div>
+            <div class="card-footer bg-white border-0 p-3">
+              <a href="@Url.Action("Details","Mesas", new { id = 1 })" class="btn btn-outline-secondary btn-sm">Ver</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-4 col-md-6">
+          <article class="card h-100">
+            <div class="card-img position-relative">
+              <img
+                src="@(Url.Content("~/img/campaigns/placeholder2.png"))"
+                alt="Capa Guerras Galácticas"
+                class="img-fluid w-100"
+                onerror="this.src='(Url.Content(\"~/img/campaigns/placeholder2.png\"))';" />
+              <span class="badge bg-info position-absolute" style="top:8px; left:8px;">Sci-Fi</span>
+            </div>
+            <div class="card-body p-3">
+              <h5 class="card-title mb-1">Guerras Galácticas</h5>
+              <p class="card-text small mb-0">Mestre: Jane Smith • Players: 4</p>
+            </div>
+            <div class="card-footer bg-white border-0 p-3">
+              <a href="@Url.Action("Details","Mesas", new { id = 2 })" class="btn btn-outline-secondary btn-sm">Ver</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-4 col-md-6">
+          <article class="card h-100">
+            <div class="card-img position-relative">
+              <img
+                src="@(Url.Content("~/img/campaigns/placeholder2.png"))"
+                alt="Capa Cataclisma"
+                class="img-fluid w-100"
+                onerror="this.src='(Url.Content(\"~/img/campaigns/placeholder2.png\"))';" />
+              <span class="badge bg-dark text-white position-absolute" style="top:8px; left:8px;">Mistério</span>
+            </div>
+            <div class="card-body p-3">
+              <h5 class="card-title mb-1">Cataclisma</h5>
+              <p class="card-text small mb-0">Mestre: Zelchi • Players: 6</p>
+            </div>
+            <div class="card-footer bg-white border-0 p-3">
+              <a href="@Url.Action("Details","Mesas", new { id = 3 })" class="btn btn-outline-secondary btn-sm">Ver</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- (adicione mais cards ou gere dinamicamente a partir do model) -->
+      </div>
+    </section>
+
+    <div class="text-center mt-4">
+      <button class="border-btn btn" aria-label="Carregar mais mesas" disabled>Mais mesas</button>
+    </div>
+</main>
