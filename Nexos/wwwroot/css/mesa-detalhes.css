@@ -1,0 +1,252 @@
+/* Mesa Detalhes Specific Styles */
+
+/* Hero Section - Mesa Detalhes */
+.hero-section-mesa {
+    background: linear-gradient(180deg, rgba(150, 120, 180, 0.8) 0%, rgba(45, 10, 49, 1) 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
+}
+
+.hero-section-mesa h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero-section-mesa .lead {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    font-weight: 400;
+}
+
+/* Game Master Section */
+.gm-section {
+    background: rgba(45, 10, 49, 0.9);
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gm-avatar .avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gm-section h4 {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.gm-section p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    color: #fff;
+}
+
+/* Premissa Section */
+.premissa-section {
+    background: #2d0a31;
+    padding: 4rem 0;
+}
+
+.premissa-image .image-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.premissa-content p {
+    color: #e0e0e0;
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* Expectativas Section */
+.expectativas-section {
+    background: #2d0a31;
+    padding: 4rem 0;
+}
+
+.expectativas-description p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Info Cards */
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(240, 103, 255, 0.3);
+}
+
+.info-card h5 {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    color: #d0d0d0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+}
+
+/* CTA Section */
+.cta-section {
+    background: #2d0a31;
+    padding: 3rem 0;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f067ff 0%, #d455e6 100%);
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(240, 103, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #d455e6 0%, #c044d1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 103, 255, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section-mesa h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section-mesa {
+        min-height: 50vh;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+    
+    .gm-section {
+        padding: 1.5rem 0;
+    }
+    
+    .gm-section .row {
+        text-align: center;
+    }
+    
+    .gm-section .col-md-2,
+    .gm-section .col-md-8,
+    .gm-section .col-md-2 {
+        margin-bottom: 1rem;
+    }
+    
+    .premissa-image .image-placeholder {
+        height: 200px;
+        margin-bottom: 2rem;
+    }
+    
+    .info-card {
+        margin-bottom: 1rem;
+    }
+    
+    .expectativas-description p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section-mesa h1 {
+        font-size: 2rem;
+    }
+    
+    .display-5 {
+        font-size: 1.8rem !important;
+    }
+    
+    .btn-primary {
+        font-size: 1rem;
+        padding: 0.75rem 2rem !important;
+    }
+}
+
+/* Additional styling for better visual hierarchy */
+.section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Smooth transitions for all interactive elements */
+.info-card,
+.btn-outline-light,
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for consistency */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2d0a31;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a545af;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #782f81;
+}
+

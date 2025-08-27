@@ -22,7 +22,7 @@ namespace Nexos.Controllers
         }
 
         // Exemplo de detalhes de uma mesa (futuro)
-        public IActionResult Details(int id)
+        public IActionResult MesaDetalhes(int id)
         {
             ViewData["Title"] = "Detalhes da Mesa";
             return View();

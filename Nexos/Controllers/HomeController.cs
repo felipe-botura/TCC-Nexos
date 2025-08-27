@@ -19,9 +19,13 @@ public class HomeController : Controller
     }
 
     public IActionResult AboutUs()
-{
-    return View();
-}
+    {
+        return View();
+    }
+    public IActionResult Definicao()
+    {
+        return View();
+    }
 
 
     public IActionResult Privacy()

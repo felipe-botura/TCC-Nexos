@@ -1,0 +1,250 @@
+/* Custom NEXOS Styles */
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #2d0a31 0%, #4a1a4f 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.hero-section .lead {
+    font-size: 1.7rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    gap: 9rem;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(240, 103, 255, 0.3);
+}
+
+.feature-card h4 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Resource Cards */
+.resource-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    height: 100%;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.resource-card h5 {
+    color: #fff;
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+}
+
+.resource-card p {
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+/* Social Cards */
+.social-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.social-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Newsletter Card */
+.newsletter-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+}
+
+.newsletter-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Card Placeholders */
+.card-placeholder .bg-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Badges */
+.badge {
+    background: rgba(240, 103, 255, 0.2) !important;
+    color: #f067ff !important;
+    border: 1px solid rgba(240, 103, 255, 0.3);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Section Headings */
+.display-5 {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #f067ff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+    
+    .display-5 {
+        font-size: 2rem !important;
+    }
+    
+    .feature-card,
+    .resource-card,
+    .social-card {
+        margin-bottom: 2rem;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+/* Animation for cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-card,
+.resource-card,
+.social-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Hover effects for interactive elements */
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Social icons styling */
+.fab {
+    font-size: 1.2rem;
+}
+
+/* Search and account icons */
+.fas.fa-search,
+.fas.fa-user-circle {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.fas.fa-search:hover,
+.fas.fa-user-circle:hover {
+    color: #f067ff;
+}
+
