@@ -13,7 +13,7 @@ namespace Nexos.Models
         public string Conteudo_Testemunho { get; set; }
 
         [Required]
-        public int ID_Autor { get; set; }
+        public string ID_Autor { get; set; }
 
         [ForeignKey(nameof(ID_Autor))]
         public Usuario Autor { get; set; }

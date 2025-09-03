@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Login - Nexos";
+    Layout = null; // Não usar o layout padrão para a página de login
+}
+
+<!doctype html>
+<html class="no-js" lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="~/css/gijgo.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/animated-headline.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <style>
+        .login-body {
+            background: linear-gradient(135deg, #2D0A31 0%, #4C1E51 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="@(Url.Content("~/img/logo/loder.png"))" alt="preloader">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader End -->
+
+<main class="login-body">
+    <!-- Login Form -->
+    <form class="form-default" asp-action="Login" asp-controller="Account" method="POST">
+        <div class="login-form">
+            <!-- logo-login -->
+            <div class="logo-login">
+                <a href="@Url.Action("Index","Home")">
+                    <img src="@(Url.Content("~/img/logo/loder.png"))" alt="Nexos">
+                </a>
+            </div>
+            <h2>Login</h2>
+            <p class="login-text">Com a sua conta logada, você oficialmente pode começar a procurar mesas e campanhas de RPG para jogar, ou postar mesas para mestrar.</p>
+            
+            <div class="form-input">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+            
+            <div class="form-input">
+                <label for="password">Senha</label>
+                <input type="password" name="password" id="password" placeholder="Senha" required>
+            </div>
+            
+            <div class="form-input pt-30">
+                <input type="submit" name="submit" value="Login">
+            </div>
+            
+            <a href="#" class="forget">Esqueci minha senha</a>
+            <a href="@Url.Action("Register","Account")" class="registration">Criar conta</a>
+        </div>
+    </form>
+</main>
+
+<!-- Scripts -->
+<script src="~/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="~/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.slicknav.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/slick.min.js"></script>
+<script src="~/js/wow.min.js"></script>
+<script src="~/js/animated.headline.js"></script>
+<script src="~/js/jquery.magnific-popup.js"></script>
+<script src="~/js/gijgo.min.js"></script>
+<script src="~/js/jquery.nice-select.min.js"></script>
+<script src="~/js/jquery.sticky.js"></script>
+<script src="~/js/jquery.barfiller.js"></script>
+<script src="~/js/jquery.counterup.min.js"></script>
+<script src="~/js/waypoints.min.js"></script>
+<script src="~/js/jquery.countdown.min.js"></script>
+<script src="~/js/hover-direction-snake.min.js"></script>
+<script src="~/js/contact.js"></script>
+<script src="~/js/jquery.form.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/mail-script.js"></script>
+<script src="~/js/jquery.ajaxchimp.min.js"></script>
+<script src="~/js/plugins.js"></script>
+<script src="~/js/main.js"></script>
+
+</body>
+</html>
+

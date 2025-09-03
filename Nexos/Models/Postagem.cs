@@ -19,7 +19,7 @@ namespace Nexos.Models
         public DateTime Data_Publicacao { get; set; } = DateTime.UtcNow;
 
         [Required]
-        public int ID_Autor { get; set; }
+        public string ID_Autor { get; set; }
 
         [ForeignKey(nameof(ID_Autor))]
         public Usuario Autor { get; set; }

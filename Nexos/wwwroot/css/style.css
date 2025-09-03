@@ -3906,13 +3906,14 @@ form.search-box .input-form .world-form i {
     width: 99px;
     height: 95px;
     position: absolute;
-    top: -57px;
+    top: -30px;
     left: 0;
     right: 0;
     margin: 0 auto;
     border: 15px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 .login-form h2 {
@@ -7562,6 +7563,7 @@ a {
     background-color: #2d0a31;
     transition: background-color 0.3s ease;
     cursor: default;
+    
 }
 
 .card:hover {

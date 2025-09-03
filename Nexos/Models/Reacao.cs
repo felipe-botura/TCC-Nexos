@@ -13,7 +13,7 @@ namespace Nexos.Models
         public string Tipo_Reacao { get; set; }
 
         [Required]
-        public int ID_Usuario { get; set; }
+        public string ID_Usuario { get; set; }
 
         [ForeignKey(nameof(ID_Usuario))]
         public Usuario Usuario { get; set; }
