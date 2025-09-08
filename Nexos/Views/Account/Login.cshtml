@@ -1,3 +1,4 @@
+@model Nexos.ViewModels.LoginVM
 @{
     ViewData["Title"] = "Login - Nexos";
     Layout = null; // Não usar o layout padrão para a página de login
@@ -5,13 +6,14 @@
 
 <!doctype html>
 <html class="no-js" lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@ViewData["Title"]</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
 
@@ -41,81 +43,106 @@
         }
     </style>
 </head>
+
 <body>
 
-<!-- Preloader Start -->
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text">
-                <img src="@(Url.Content("~/img/logo/loder.png"))" alt="preloader">
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="@(Url.Content("~/img/logo/loder.png"))" alt="preloader">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Preloader End -->
+    <!-- Preloader End -->
 
-<main class="login-body">
-    <!-- Login Form -->
-    <form class="form-default" asp-action="Login" asp-controller="Account" method="POST">
-        <div class="login-form">
-            <!-- logo-login -->
-            <div class="logo-login">
-                <a href="@Url.Action("Index","Home")">
-                    <img src="@(Url.Content("~/img/logo/loder.png"))" alt="Nexos">
-                </a>
-            </div>
-            <h2>Login</h2>
-            <p class="login-text">Com a sua conta logada, você oficialmente pode começar a procurar mesas e campanhas de RPG para jogar, ou postar mesas para mestrar.</p>
-            
-            <div class="form-input">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-            </div>
-            
-            <div class="form-input">
-                <label for="password">Senha</label>
-                <input type="password" name="password" id="password" placeholder="Senha" required>
-            </div>
-            
-            <div class="form-input pt-30">
-                <input type="submit" name="submit" value="Login">
-            </div>
-            
-            <a href="#" class="forget">Esqueci minha senha</a>
-            <a href="@Url.Action("Register","Account")" class="registration">Criar conta</a>
-        </div>
-    </form>
-</main>
+    <main class="login-body">
+        <!-- Login Form -->
+        <form class="form-default" asp-action="Login" asp-controller="Account" method="POST">
+            <div class="login-form">
+                <!-- logo-login -->
+                <div class="logo-login">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="@(Url.Content("~/img/logo/loder.png"))" alt="Nexos">
+                    </a>
+                </div>
+                <h2>Login</h2>
+                <p class="login-text">Com a sua conta logada, você oficialmente pode começar a procurar mesas e
+                    campanhas de RPG para jogar, ou postar mesas para mestrar.</p>
 
-<!-- Scripts -->
-<script src="~/js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="~/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="~/js/popper.min.js"></script>
-<script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/jquery.slicknav.min.js"></script>
-<script src="~/js/owl.carousel.min.js"></script>
-<script src="~/js/slick.min.js"></script>
-<script src="~/js/wow.min.js"></script>
-<script src="~/js/animated.headline.js"></script>
-<script src="~/js/jquery.magnific-popup.js"></script>
-<script src="~/js/gijgo.min.js"></script>
-<script src="~/js/jquery.nice-select.min.js"></script>
-<script src="~/js/jquery.sticky.js"></script>
-<script src="~/js/jquery.barfiller.js"></script>
-<script src="~/js/jquery.counterup.min.js"></script>
-<script src="~/js/waypoints.min.js"></script>
-<script src="~/js/jquery.countdown.min.js"></script>
-<script src="~/js/hover-direction-snake.min.js"></script>
-<script src="~/js/contact.js"></script>
-<script src="~/js/jquery.form.js"></script>
-<script src="~/js/jquery.validate.min.js"></script>
-<script src="~/js/mail-script.js"></script>
-<script src="~/js/jquery.ajaxchimp.min.js"></script>
-<script src="~/js/plugins.js"></script>
-<script src="~/js/main.js"></script>
+                <div class="form-input">
+                    <input class="form-control" asp-for="Email" />
+                    <label asp-for="Email"></label>
+                    <span asp-validation-for="Email" class="text-danger text-sm"></span>
+                </div>
 
+                <div class="form-input">
+                    <input class="form-control" asp-for="Senha" />
+                    <label asp-for="Senha"></label>
+                    <span asp-validation-for="Senha" class="text-danger text-sm"></span>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" asp-for="Lembrar" type="checkbox" value="" />
+                    <label class="form-check-label" style="color: #fff; margin-left: 5px;" asp-for="Lembrar"></label>
+                </div>
+
+                
+
+                <div class="d-flex flex-column align-items-center justify-content-center mt-4 mb-0">
+                    <input type="submit" class="btn btn-primary w-100 mb-3" value="Entrar">
+                    <a class="small" style="color: #fff;" href="password.html">Esqueceu sua Senha?</a>
+                </div>
+                <a href="@Url.Action("Register", "Account")" class="registration">Criar conta</a>
+            </div>
+        </form>
+    </main>
+
+    <!-- Scripts -->
+    <script src="~/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/slick.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/animated.headline.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/gijgo.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/js/jquery.barfiller.js"></script>
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/jquery.countdown.min.js"></script>
+    <script src="~/js/hover-direction-snake.min.js"></script>
+    <script src="~/js/contact.js"></script>
+    <script src="~/js/jquery.form.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/mail-script.js"></script>
+    <script src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+
+    <script type="text/javascript">
+        let mensagemErro = '';
+        $(".validation-summary-errors ul li").each(function () {
+            mensagemErro += $(this).text() + '<br />';
+        });
+        if (mensagemErro != '')
+            swal.fire(
+                'Acesso Negado',
+                mensagemErro,
+                'error'
+            );
+    </script>
 </body>
-</html>
 
+</html>
