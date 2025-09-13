@@ -1,10 +1,11 @@
 using System.Net.Mail;
 using System.Security.Claims;
+using Nexos.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Nexos.Models;
-using Nexos.ViewModels;
-
+using Nexos.Helpers;
+using Nexos.Data;
 namespace Nexos.Controllers;
 
 public class AccountController : Controller
@@ -13,19 +14,22 @@ public class AccountController : Controller
     private readonly SignInManager<Usuario> _signInManager;
     private readonly UserManager<Usuario> _userManager;
     private readonly IWebHostEnvironment _host;
+    private readonly AppDbContext _db;
 
     public AccountController(
 
-        ILogger<AccountController> logger,
-        SignInManager<Usuario> signInManager,
-        UserManager<Usuario> userManager,
-        IWebHostEnvironment host
+    ILogger<AccountController> logger,
+    SignInManager<Usuario> signInManager,
+    UserManager<Usuario> userManager,
+    IWebHostEnvironment host,
+    AppDbContext db
     )
     {
         _logger = logger;
         _signInManager = signInManager;
         _userManager = userManager;
         _host = host;
+        _db = db;
 
     }
 
@@ -91,6 +95,13 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
+    [HttpGet]
+    public IActionResult Register()
+    {
+        RegistroVM register = new();
+        return View(register);
+    }
+
     public bool IsValidEmail(string email)
     {
         try
@@ -103,5 +114,41 @@ public class AccountController : Controller
             return false;
         }
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Register(RegistroVM registro)
+    {
+        if (ModelState.IsValid)
+        {
+            var usuario = Activator.CreateInstance<Usuario>();
+            usuario.Nome = registro.Nome;
+            usuario.DataNascimento = registro.DataNascimento;
+            usuario.UserName = registro.Email;
+            usuario.NormalizedUserName = registro.Email.ToUpper();
+            usuario.Email = registro.Email;
+            usuario.NormalizedEmail = registro.Email.ToUpper();
+            usuario.EmailConfirmed = true;
+            var result = await _userManager.CreateAsync(usuario, registro.Senha);
 
+            if (result.Succeeded)
+            {
+                _logger.LogInformation($"Novo usuário registrado com o email {registro.Email}.");
+
+                await _userManager.AddToRoleAsync(usuario, "Usuário");
+
+                TempData["Success"] = "Conta Criada com Sucesso!";
+                return RedirectToAction(nameof(Login));
+            }
+
+            foreach (var error in result.Errors)
+                ModelState.AddModelError(string.Empty, TranslateIdentityErrors.TranslateErrorMessage(error.Code));
+        }
+
+        return View(registro);
+    }
+
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
 }

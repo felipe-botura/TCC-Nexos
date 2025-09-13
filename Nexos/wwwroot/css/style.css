@@ -7563,7 +7563,7 @@ a {
     background-color: #2d0a31;
     transition: background-color 0.3s ease;
     cursor: default;
-    
+
 }
 
 .card:hover {
@@ -7848,4 +7848,25 @@ footer nav a:focus-visible {
     .feedback-item {
         flex: 1 1 100%;
     }
+}
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+    font-size: unset !important;
+    background: #2D0A31 !important;
+    color: #fff !important;
+    border-radius: 10px  !important;
+    border: 3px solid palevioletred !important;  
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){
+    background-color: #c666e0 !important;
+    border-radius: 20% !important;
+}
+
+div:where(.swal2-icon).swal2-error [class^=swal2-x-mark-line] {
+    background-color: red !important;
+}
+
+div:where(.swal2-icon).swal2-error {
+    border-color: red !important;
 }
