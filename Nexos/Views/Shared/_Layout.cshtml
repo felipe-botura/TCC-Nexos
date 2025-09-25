@@ -74,10 +74,12 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="@Url.Action("Index","Mesas")">Mesas Disponíveis</a></li>   
-                                                <li><a href="@Url.Action("Jogadores","Home")">Jogadores</a></li>
                                                 <li><a href="@Url.Action("Contact","Home")">Sistemas</a></li>
                                                 <li class="button-header margin-left"><a href="@Url.Action("Register","Account")" class="btn">Criar Conta</a></li>
                                                 <li class="button-header"><a href="@Url.Action("Login","Account")" class="btn3">Entrar</a></li>
+                                                <div class="ms-3">
+                                                    <partial name="_LoginPartial">
+                                                </div>
                                             </ul>
                                         </nav>
                                     </div>

@@ -13,7 +13,7 @@ namespace Nexos.Data
 
         public DbSet<Genero> Generos { get; set; }
         public DbSet<Sistema> Sistemas { get; set; }
-        public DbSet<Usuario> UsuariosCustom { get; set; } // se já usa Identity, mantenha apenas IdentityUser-related se quiser
+        public DbSet<Usuario> Usuarios { get; set; } // se já usa Identity, mantenha apenas IdentityUser-related se quiser
         public DbSet<CampanhaMesa> CampanhasMesas { get; set; }
         public DbSet<Testemunho> Testemunhos { get; set; }
         public DbSet<Postagem> Postagens { get; set; }
