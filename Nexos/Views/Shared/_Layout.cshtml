@@ -3,6 +3,7 @@
 }
 <!doctype html>
 <html class="no-js" lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -70,16 +71,13 @@
                                                 <li><a href="#">Sobre</a>
                                                     <ul class="submenu">
                                                         <li><a href="@Url.Action("AboutUs","Home")">Sobre Nós</a></li>
-                                                        <li><a href="@Url.Action("Definicao","Home")">O que é RPG</a></li>
+                                                        <li><a href="@Url.Action("Definicao","Home")">O que é RPG</a>
+                                                        </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="@Url.Action("Index","Mesas")">Mesas Disponíveis</a></li>   
+                                                <li><a href="@Url.Action("Index","Mesas")">Mesas Disponíveis</a></li>
                                                 <li><a href="@Url.Action("Contact","Home")">Sistemas</a></li>
-                                                <li class="button-header margin-left"><a href="@Url.Action("Register","Account")" class="btn">Criar Conta</a></li>
-                                                <li class="button-header"><a href="@Url.Action("Login","Account")" class="btn3">Entrar</a></li>
-                                                <div class="ms-3">
-                                                    <partial name="_LoginPartial">
-                                                </div>
+                                                <li><partial name="_LoginPartial"></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -110,17 +108,23 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-logo mb-25">
-                                    <a href="@Url.Action("Index","Home")"><img src="@(Url.Content("~/img/logo/logo2_footer.png"))" alt="logo footer" /></a>
+                                    <a href="@Url.Action("Index","Home")"><img
+                                            src="@(Url.Content("~/img/logo/logo2_footer.png"))" alt="logo footer" /></a>
                                 </div>
                                 <div class="footer-tittle mb-50">
                                     <p>Subscribe our newsletter to get updates about our services</p>
                                 </div>
                                 <div class="footer-form">
                                     <div id="mc_embed_signup">
-                                        <form target="_blank" action="#" method="get" class="subscribe_form relative mail_part" novalidate="true">
-                                            <input type="email" name="EMAIL" id="newsletter-form-email" placeholder=" Email Address " class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'">
+                                        <form target="_blank" action="#" method="get"
+                                            class="subscribe_form relative mail_part" novalidate="true">
+                                            <input type="email" name="EMAIL" id="newsletter-form-email"
+                                                placeholder=" Email Address " class="placeholder hide-on-focus"
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = 'Your email address'">
                                             <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">Subscribe</button>
+                                                <button type="submit" name="submit" id="newsletter-submit"
+                                                    class="email_icon newsletter-submit button-contactForm">Subscribe</button>
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
@@ -187,8 +191,10 @@
                             <div class="col-xl-12">
                                 <div class="footer-copy-right text-center">
                                     <p>
-                                        Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved |
-                                        This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                        Copyright &copy;
+                                        <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                        This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                            href="https://colorlib.com" target="_blank">Colorlib</a>
                                     </p>
                                 </div>
                             </div>
@@ -232,8 +238,10 @@
     <script src="~/js/plugins.js"></script>
     <script src="~/js/main.js"></script>
 
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
-
-

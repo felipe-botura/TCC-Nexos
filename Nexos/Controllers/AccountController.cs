@@ -96,9 +96,13 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Register()
+    public IActionResult Register(string returnUrl)
     {
-        RegistroVM register = new();
+        RegistroVM register = new()
+        {
+            UrlRetorno = returnUrl ?? Url.Content("~/")
+
+        };
         return View(register);
     }
 

@@ -63,6 +63,7 @@
         <!-- Login Form -->
         <form class="form-default" asp-action="Login" asp-controller="Account" method="POST">
             <div asp-validation-summary="ModelOnly" hidden></div>
+            <input type="hidden" asp-for="UrlRetorno" >
             <div class="login-form">
                 <!-- logo-login -->
                 <div class="logo-login">

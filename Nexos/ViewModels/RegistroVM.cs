@@ -31,5 +31,7 @@ namespace Nexos.ViewModels
         public string ConfirmacaoSenha { get; set; }
 
         public IFormFile Foto { get; set; }
+        public string UrlRetorno { get; set; }
+
     }
 }
