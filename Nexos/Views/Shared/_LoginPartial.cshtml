@@ -15,11 +15,11 @@
 }
 else
 {
-    <div class=""nav-item dropdown me-2"">
-        <button class="nav-link text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="nav-item dropdown me-2">
+        <div class="nav-link bg-transparent border-0 text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="@(usuario.Foto ?? Url.Content("~/img/usuarios/no-photo.png"))" width="40" height="40"
                 class="object-fit-cover rounded-5">
-        </button>
+        </div>
         <ul class="dropdown-menu" style="position:absolute!important; margin-left: -200px!important; width:310px">
             @if (User.IsInRole("Administrador") || User.IsInRole("Funcionário"))
             {

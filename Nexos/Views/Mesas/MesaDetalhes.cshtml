@@ -1,5 +1,6 @@
+@model Nexos.Models.CampanhaMesa
 @{
-    ViewData["Title"] = "Coração de Vidro Negro - Mesa de RPG";
+    ViewData["Title"] = @Model.Titulo_Campanha;
 }
 
 <!-- Hero Section -->
@@ -7,7 +8,7 @@
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-lg-8">
-                <h1 class="display-3 fw-bold mb-3">Coração de Vidro Negro</h1>
+                <h1 class="display-3 fw-bold mb-3">@Model.Titulo_Campanha</h1>
                 <p class="lead">Join a thrilling journey crafted by our experienced Game Master!</p>
             </div>
         </div>
@@ -54,20 +55,7 @@
             <div class="col-lg-7">
                 <div class="premissa-content">
                     <p class="mb-4">
-                        Há séculos, a cidade flutuante de Varethyl paira sobre uma cratera proibida — o 
-                        Abismo de Ithil. Hoje, quando personagens esquecidas, pulsa o coração petrificado de 
-                        um deus traído.
-                    </p>
-                    <p class="mb-4">
-                        Agora, com as placas arcanas que sustentam a cidade enfraquecendo e uma doença 
-                        cristalina se espalhando entre os moradores, rumores voltam a circular: o Coração 
-                        de Vidro Negro está despertando.
-                    </p>
-                    <p class="mb-0">
-                        Os jogadores assumem o papel de figuras marginalizadas (órfãos de guerra, 
-                        hereges, foragidos, autômatos esquecidos) que são os únicos capazes de descer até 
-                        o núcleo esquecido do mundo e confrontar as memórias de uma divindade vingativa 
-                        — ou fundar uma nova era com seu poder.
+                       @Model.Premissa_Campanha
                     </p>
                 </div>
             </div>
@@ -86,94 +74,65 @@
         
         <div class="expectativas-description mb-5">
             <p class="text-center lead">
-                Nesta campanha, espere uma jornada repleta de mistérios arcanos, visões fragmentadas e segredos enterrados sob a superfície da realidade. 
-                "Coração de Vidro Negro" combina personagens marginalizados, magia sombria e escolhas morais que ecoam através de gerações. Prepare-se para uma 
-                narrativa densa, mas acessível, onde cada decisão molda não apenas o destino individual, mas o futuro de civilizações inteiras. Temas psicológicos e 
-                de identidade se entrelaçam, abordando identidade, corrupção e a tênue linha entre o bem arbitrário e a influência divina.
-            </p>
-            <p class="text-center">
-                Os jogadores se verão cercados por escolhas difíceis, visões perturbadoras e revelações que desafiam a própria essência do Coração do 
-                Coração, preparado que a corrupção não é apenas externa — ela se infiltra nos pensamentos, desejos e na própria essência de quem ousa se 
-                aproximar demais. É através de relações interpessoais (seja pelo peso significativo, e os apenas de corredores silenciosos de uma cidade flutuante a 
-                masmorras antigas), que os segredos mais profundos são revelados.
-            </p>
-            <p class="text-center">
-                Esta não é apenas uma campanha de fantasia — é uma experiência de transformação. Cada decisão ecoara, moldando o destino do mundo e 
-                daqueles que o desafiam.
+                @Model.O_Que_Esperar
             </p>
         </div>
 
         <!-- Cards de Informações -->
         <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Faixa Etária</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.Faixa_Etaria</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Sistema</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.ID_Sistema</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Gênero</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.ID_Genero</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Vagas Disponíveis</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.Vagas_Disponiveis</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Dias e Horários</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.Dias_Horarios</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;" style="margin: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Modalidade</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.Modalidade</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Plataformas</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.Plataformas</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Requisitos</h5>
-                    <p class="mb-2">Combate Balanceado,</p>
-                    <p class="mb-2">Exploração e Interpretação</p>
-                    <p class="mb-0">de personagens</p>
+                    <p class="mb-2">@Model.Requisitos</p>
                 </div>
             </div>
         </div>

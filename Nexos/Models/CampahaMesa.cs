@@ -60,5 +60,7 @@ namespace Nexos.Models
         [Required]
         public int Numero_Jogadores { get; set; }
 
+        public DateTime DataCriacao { get; set; }
+
     }
 }

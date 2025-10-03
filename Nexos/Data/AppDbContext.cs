@@ -23,7 +23,7 @@ namespace Nexos.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            seedDefaultUser(modelBuilder);
+            AppDbSeed.Seed(modelBuilder);
         }
 
         private static void seedDefaultUser(ModelBuilder builder)

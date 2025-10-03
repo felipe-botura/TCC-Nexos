@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Área Administrativa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="hero-banner py-5">
+    <div class="container">
+        <h1 class="display-4 text-white mb-3">Área Administrativa</h1>
+        <p class="lead text-light opacity-75 mb-4">Seja bem vindo, administrador! Utilize o menu lateral ou botões abaixo para ter acesso aos diferentes cadastros do portal!</p>
+        <hr class="my-4 border-light opacity-25">
+
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Genero">
+                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
+                        <h5 class="card-title mb-2">Genero</h5>
+                        <p class="card-text opacity-75">Cadastradas: 1</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="SIstemas">
+                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
+                        <h5 class="card-title mb-2">SIstemas</h5>
+                        <p class="card-text opacity-75">Cadastrados: 14</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Gêneros">
+                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
+                        <h5 class="card-title mb-2">Gêneros</h5>
+                        <p class="card-text opacity-75">Cadastradas: 12</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Mesas">
+                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
+                        <h5 class="card-title mb-2">Mesas</h5>
+                        <p class="card-text opacity-75">Cadastradas: 12</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
