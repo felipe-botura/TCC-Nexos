@@ -3414,8 +3414,6 @@ form.search-box .input-form .search-form button {
 
 form.search-box .input-form .search-form i {
     position: relative;
-    left: 2px;
-    top: 3px;
 }
 
 #logo-pesquisa {
@@ -7854,11 +7852,11 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     font-size: unset !important;
     background: #2D0A31 !important;
     color: #fff !important;
-    border-radius: 10px  !important;
-    border: 3px solid palevioletred !important;  
+    border-radius: 10px !important;
+    border: 3px solid palevioletred !important;
 }
 
-div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm){
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     background-color: #c666e0 !important;
     border-radius: 20% !important;
 }
@@ -7874,44 +7872,56 @@ div:where(.swal2-icon).swal2-error {
 
 /* Botão do dropdown (foto do usuário) */
 .nav-item .nav-link img {
-    border-radius: 50%;          
-    object-fit: cover;           
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
 }
 
 .nav-item .nav-link img:hover {
-    transform: scale(1.05);      
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Dropdown container */
 .dropdown-menu {
-    background-color: #2a003f !important;   
+    background-color: #2a003f !important;
     border: none;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     padding: 8px 0;
     margin-right: 50px;
     animation: fadeDown 0.25s ease-in-out;
 
-    right: 0 !important;        /* Força alinhamento à direita */
-    left: auto !important;      /* Remove deslocamento fixo */
-    margin-top: 10px;           /* Afasta da imagem */
-    min-width: 230px;           /* Largura mínima */
+    right: 0 !important;
+    /* Força alinhamento à direita */
+    left: auto !important;
+    /* Remove deslocamento fixo */
+    margin-top: 10px;
+    /* Afasta da imagem */
+    min-width: 230px;
+    /* Largura mínima */
 }
 
 /* Animação de entrada */
 @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Itens do dropdown */
 .dropdown-menu .dropdown-item {
     color: #fff;
-    padding: 12px 18px !important;         /* Mais espaçamento */
+    padding: 12px 18px !important;
+    /* Mais espaçamento */
     font-size: 15px;
     font-weight: 500;
     transition: background 0.2s;
@@ -7920,11 +7930,110 @@ div:where(.swal2-icon).swal2-error {
 
 .dropdown-menu .dropdown-item i {
     margin-right: 8px;
-    color: #c084fc; 
+    color: #c084fc;
 }
 
 /* Hover nos itens */
 .dropdown-menu .dropdown-item:hover {
-    background-color: #40005e;  
+    background-color: #40005e;
     color: #fff;
+}
+
+/* Newsletter Section Styles */
+.section-padding {
+    padding: 60px 0;
+}
+
+.newsletter-card {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.newsletter-content {
+    margin-bottom: 24px;
+}
+
+.newsletter-input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 14px 20px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-button {
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.newsletter-button:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.3);
+}
+
+.newsletter-button:active {
+    transform: translateY(0);
+}
+
+.newsletter-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .newsletter-input-wrapper {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .newsletter-input {
+        width: 100%;
+        text-align: center;
+    }
+
+    .newsletter-button {
+        width: 100%;
+    }
+
+    .newsletter-text {
+        font-size: 14px;
+    }
 }
