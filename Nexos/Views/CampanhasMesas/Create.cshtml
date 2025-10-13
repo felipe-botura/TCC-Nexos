@@ -1,0 +1,104 @@
+@model Nexos.Models.CampanhaMesa
+
+@{
+    ViewData["Title"] = "Criar Mesa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-50 pb-50">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="section-title mb-40">Criar Nova Mesa</h1>
+            <div class="card bg-dark text-white p-4">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Titulo_Campanha" class="control-label"></label>
+                        <input asp-for="Titulo_Campanha" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Titulo_Campanha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="ID_Mestre" class="control-label">Mestre</label>
+                        <select asp-for="ID_Mestre" class="form-control bg-secondary text-white border-0" asp-items="ViewBag.ID_Mestre"></select>
+                        <span asp-validation-for="ID_Mestre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Premissa_Campanha" class="control-label"></label>
+                        <textarea asp-for="Premissa_Campanha" class="form-control bg-secondary text-white border-0" rows="3"></textarea>
+                        <span asp-validation-for="Premissa_Campanha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="O_Que_Esperar" class="control-label"></label>
+                        <textarea asp-for="O_Que_Esperar" class="form-control bg-secondary text-white border-0" rows="3"></textarea>
+                        <span asp-validation-for="O_Que_Esperar" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Imagem_Capa" class="control-label"></label>
+                        <input type="file" name="imagemCapaFile" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Imagem_Capa" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Status_Campanha" class="control-label"></label>
+                        <input asp-for="Status_Campanha" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Status_Campanha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Vagas_Disponiveis" class="control-label"></label>
+                        <input asp-for="Vagas_Disponiveis" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Vagas_Disponiveis" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Faixa_Etaria" class="control-label"></label>
+                        <input asp-for="Faixa_Etaria" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Faixa_Etaria" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="ID_Sistema" class="control-label">Sistema</label>
+                        <select asp-for="ID_Sistema" class="form-control bg-secondary text-white border-0" asp-items="ViewBag.ID_Sistema"></select>
+                        <span asp-validation-for="ID_Sistema" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="ID_Genero" class="control-label">Gênero</label>
+                        <select asp-for="ID_Genero" class="form-control bg-secondary text-white border-0" asp-items="ViewBag.ID_Genero"></select>
+                        <span asp-validation-for="ID_Genero" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Dias_Horarios" class="control-label"></label>
+                        <input asp-for="Dias_Horarios" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Dias_Horarios" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Modalidade" class="control-label"></label>
+                        <input asp-for="Modalidade" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Modalidade" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Plataformas" class="control-label"></label>
+                        <input asp-for="Plataformas" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Plataformas" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Requisitos" class="control-label"></label>
+                        <input asp-for="Requisitos" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Requisitos" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Numero_Jogadores" class="control-label"></label>
+                        <input asp-for="Numero_Jogadores" class="form-control bg-secondary text-white border-0" />
+                        <span asp-validation-for="Numero_Jogadores" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" value="Criar" class="btn hero-btn" />
+                        <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

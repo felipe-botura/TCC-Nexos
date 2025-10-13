@@ -1,0 +1,33 @@
+@model Nexos.Models.Sistema
+
+@{
+    ViewData["Title"] = "Excluir Sistema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-50 pb-50">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="section-title mb-40">Excluir Sistema</h1>
+            <div class="card bg-dark text-white p-4">
+                <h3 class="mb-3">Tem certeza de que deseja excluir este sistema?</h3>
+                <hr />
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Nome_Sistema)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Nome_Sistema)
+                    </dd>
+                </dl>
+                
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="ID_Sistema" />
+                    <input type="submit" value="Excluir" class="btn btn-danger" /> |
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,126 @@
+@model Nexos.Models.CampanhaMesa
+
+@{
+    ViewData["Title"] = "Detalhes da Mesa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-50 pb-50">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="section-title mb-40">Detalhes da Mesa</h1>
+            <div class="card bg-dark text-white p-4">
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Titulo_Campanha)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Titulo_Campanha)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Mestre)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Mestre.UserName)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Premissa_Campanha)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Premissa_Campanha)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.O_Que_Esperar)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.O_Que_Esperar)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Imagem_Capa)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @if (!string.IsNullOrEmpty(Model.Imagem_Capa))
+                        {
+                            <img src="@Url.Content(Model.Imagem_Capa)" alt="Imagem de Capa" class="img-thumbnail" style="max-width: 200px;" />
+                        }
+                        else
+                        {
+                            <span>Nenhuma imagem</span>
+                        }
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Status_Campanha)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Status_Campanha)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Vagas_Disponiveis)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Vagas_Disponiveis)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Faixa_Etaria)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Faixa_Etaria)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Sistema)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Sistema.Nome_Sistema)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Genero)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Genero.Nome_Genero)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Dias_Horarios)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Dias_Horarios)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Modalidade)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Modalidade)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Plataformas)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Plataformas)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Requisitos)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Requisitos)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Numero_Jogadores)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Numero_Jogadores)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.DataCriacao)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.DataCriacao)
+                    </dd>
+                </dl>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.ID_Campanha" class="btn hero-btn">Editar</a>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

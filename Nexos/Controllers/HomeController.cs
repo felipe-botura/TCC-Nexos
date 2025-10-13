@@ -33,7 +33,8 @@ public class HomeController : Controller
     public IActionResult Mesas()
     {
         ViewData["Title"] = "Mesas Disponíveis";
-        return View();
+        var mesas = _context.CampanhasMesas.ToList();
+        return View(mesas);
     }
 
     public IActionResult MesaDetalhes(int id)

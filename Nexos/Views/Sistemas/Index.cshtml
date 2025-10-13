@@ -1,0 +1,44 @@
+@model IEnumerable<Nexos.Models.Sistema>
+
+@{
+    ViewData["Title"] = "Sistemas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-50 pb-50">
+    <div class="row">
+        <div class="col-lg-12" style="padding-top: 30px;">
+            <h1 class="section-title mb-40">Gerenciar Sistemas</h1>
+            <p class="mb-30">
+                <a asp-action="Create" class="btn hero-btn">Adicionar Novo Sistema</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nome_Sistema)
+                            </th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome_Sistema)
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Edit" asp-route-id="@item.ID_Sistema" class="btn btn-sm btn-primary">Editar</a> |
+                                    <a asp-action="Details" asp-route-id="@item.ID_Sistema" class="btn btn-sm btn-info">Detalhes</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.ID_Sistema" class="btn btn-sm btn-danger">Excluir</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,3 +1,5 @@
+@model Nexos.ViewModels.AdminDashboardVM
+
 @{
     ViewData["Title"] = "Área Administrativa";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -11,37 +13,30 @@
 
         <div class="row g-4 mt-4">
             <div class="col-md-4">
-                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Genero">
-                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
-                        <h5 class="card-title mb-2">Genero</h5>
-                        <p class="card-text opacity-75">Cadastradas: 1</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="SIstemas">
-                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
-                        <h5 class="card-title mb-2">SIstemas</h5>
-                        <p class="card-text opacity-75">Cadastrados: 14</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Gêneros">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Generos">
                     <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
                         <h5 class="card-title mb-2">Gêneros</h5>
-                        <p class="card-text opacity-75">Cadastradas: 12</p>
+                        <p class="card-text opacity-75">Cadastrados: @Model.GeneroCount</p>
                     </div>
                 </a>
             </div>
             <div class="col-md-4">
-                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Mesas">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="Sistemas">
+                    <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
+                        <h5 class="card-title mb-2">Sistemas</h5>
+                        <p class="card-text opacity-75">Cadastrados: @Model.SistemaCount</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn-purple d-block p-0 text-decoration-none" asp-action="Index" asp-controller="CampanhasMesas">
                     <div class="feature-box text-white p-4 h-100 d-flex flex-column justify-content-between">
                         <h5 class="card-title mb-2">Mesas</h5>
-                        <p class="card-text opacity-75">Cadastradas: 12</p>
+                        <p class="card-text opacity-75">Cadastradas: @Model.MesaCount</p>
                     </div>
                 </a>
             </div>
         </div>
     </div>
 </div>
+

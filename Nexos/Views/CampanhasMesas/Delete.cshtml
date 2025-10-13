@@ -1,0 +1,57 @@
+@model Nexos.Models.CampanhaMesa
+
+@{
+    ViewData["Title"] = "Excluir Mesa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-50 pb-50">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="section-title mb-40">Excluir Mesa</h1>
+            <div class="card bg-dark text-white p-4">
+                <h3 class="mb-3">Tem certeza de que deseja excluir esta mesa?</h3>
+                <hr />
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Titulo_Campanha)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Titulo_Campanha)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Mestre)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Mestre.UserName)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Sistema)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Sistema.Nome_Sistema)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Genero)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Genero.Nome_Genero)
+                    </dd>
+                    <dt class="col-sm-3">
+                        @Html.DisplayNameFor(model => model.Status_Campanha)
+                    </dt>
+                    <dd class="col-sm-9">
+                        @Html.DisplayFor(model => model.Status_Campanha)
+                    </dd>
+                </dl>
+                
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="ID_Campanha" />
+                    <input type="submit" value="Excluir" class="btn btn-danger" /> |
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
