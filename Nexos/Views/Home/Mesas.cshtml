@@ -5,55 +5,225 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/mesas.css">
+    <style>
+       
+    </style>
 }
 
 <main role="main">
-  <section class="main-header1" aria-labelledby="main-title" style="margin-top: 150px;">
+  <section class="main-header1" aria-labelledby="main-title">
     <h1 id="main-title">Descubra campanhas e Mesas disponíveis</h1>
     <p>Encontre uma campanha sem igual para jogar RPG. Explore campanhas, mesas e one-shots aqui mesmo!</p>
     <button class="border-btn" type="button" aria-label="Criar nova campanha">Criar Campanha</button>
   </section>
 
   <section class="filters" aria-label="Filtros para pesquisa de campanhas">
-    <div class="filter-box" tabindex="0" aria-label="Filtro de gêneros">
-      <strong class="dropdown-toggle">Gênero</strong>
-      <span>Fantasia, Horror, sci-fi mistério,</span>
+    <!-- Filtro de Gênero -->
+    <div class="filter-box" id="generoFilter" tabindex="0" aria-label="Filtro de gêneros">
+      <strong class="dropdown-toggle">Gênero <span class="filter-badge" id="generoBadge" style="display:none;"></span></strong>
+      <span>Fantasia, Horror, sci-fi mistério...</span>
+      <div class="dropdown-menu" id="generoDropdown">
+        <div class="dropdown-item" data-value="">Todos os gêneros</div>
+        @foreach (var genero in ViewBag.Generos)
+        {
+          <div class="dropdown-item" data-value="@genero.ID_Genero">@genero.Nome_Genero</div>
+        }
+      </div>
     </div>
-    <div class="filter-box" tabindex="0" aria-label="Filtro de sistemas de jogo">
-      <strong class="dropdown-toggle">Sistema</strong>
+
+    <!-- Filtro de Sistema -->
+    <div class="filter-box" id="sistemaFilter" tabindex="0" aria-label="Filtro de sistemas de jogo">
+      <strong class="dropdown-toggle">Sistema <span class="filter-badge" id="sistemaBadge" style="display:none;"></span></strong>
       <span>Dungeons & Dragons, Pathfinder, etc.</span>
+      <div class="dropdown-menu" id="sistemaDropdown">
+        <div class="dropdown-item" data-value="">Todos os sistemas</div>
+        @foreach (var sistema in ViewBag.Sistemas)
+        {
+          <div class="dropdown-item" data-value="@sistema.ID_Sistema">@sistema.Nome_Sistema</div>
+        }
+      </div>
     </div>
-    <div class="filter-box" tabindex="0" aria-label="Filtro de modalidade">
-      <strong class="dropdown-toggle">Modalidade</strong>
+
+    <!-- Filtro de Modalidade -->
+    <div class="filter-box" id="modalidadeFilter" tabindex="0" aria-label="Filtro de modalidade">
+      <strong class="dropdown-toggle">Modalidade <span class="filter-badge" id="modalidadeBadge" style="display:none;"></span></strong>
       <span>Escolha entre presencial ou online</span>
+      <div class="dropdown-menu" id="modalidadeDropdown">
+        <div class="dropdown-item" data-value="">Todas as modalidades</div>
+        <div class="dropdown-item" data-value="Online">Online</div>
+        <div class="dropdown-item" data-value="Presencial">Presencial</div>
+        <div class="dropdown-item" data-value="Híbrido">Híbrido</div>
+      </div>
     </div>
-    <div class="filter-box" tabindex="0" aria-label="Filtro de categoria">
-      <strong class="dropdown-toggle">Categoria</strong>
+
+    <!-- Filtro de Categoria -->
+    <div class="filter-box" id="categoriaFilter" tabindex="0" aria-label="Filtro de categoria">
+      <strong class="dropdown-toggle">Categoria <span class="filter-badge" id="categoriaBadge" style="display:none;"></span></strong>
       <span>One-shot, campanha longa, etc...</span>
+      <div class="dropdown-menu" id="categoriaDropdown">
+        <div class="dropdown-item" data-value="">Todas as categorias</div>
+        <div class="dropdown-item" data-value="One-shot">One-shot</div>
+        <div class="dropdown-item" data-value="Campanha">Campanha Longa</div>
+        <div class="dropdown-item" data-value="Mini-campanha">Mini-campanha</div>
+      </div>
     </div>
   </section>
 
-  <section class="campaigns-grid" aria-label="Campanhas disponíveis para jogar">
+  <button class="clear-filters" id="clearFilters">Limpar Filtros</button>
 
-    @foreach (var campanhaMesa in Model)
-{
-    <!-- Card 1 -->
-    <article class="card" tabindex="0"
-        aria-label="@campanhaMesa.Titulo_Campanha. Gênero Fantasia. Mestre Hemi Domiciano. Jogadores @campanhaMesa.Numero_Jogadores">
-        <div class="card-image">
-        <img
-            src="@campanhaMesa.Imagem_Capa"
-            alt="Capa da campanha de RPG fantasy, cores roxas e detalhes de fantasia"
-            onerror="this.style.backgroundColor='#513b71';" />
-        <span class="tag">Fantasia</span>
-        </div>
-        <div class="card-content">
-        <strong>@campanhaMesa.Titulo_Campanha</strong>
-        <small>Mestre: Hemi Domiciano - @campanhaMesa.Numero_Jogadores</small>
-        </div>
-    </article>
-}
+  <section class="campaigns-grid" id="campaignsGrid" aria-label="Campanhas disponíveis para jogar">
+    @Html.Partial("_MesasCards", Model)
   </section>
-  <button class="border-btn" aria-label="Carregar mais mesas" disabled>Mais mesas</button>
 
+  <button class="border-btn" aria-label="Carregar mais mesas">Mais mesas</button>
 </main>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let selectedFilters = {
+                generoId: '',
+                sistemaId: '',
+                modalidade: '',
+                categoria: ''
+            };
+
+            // Toggle dropdowns
+            document.querySelectorAll('.filter-box').forEach(box => {
+                box.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('dropdown-item')) {
+                        const dropdown = this.querySelector('.dropdown-menu');
+                        const allDropdowns = document.querySelectorAll('.dropdown-menu');
+                        
+                        allDropdowns.forEach(d => {
+                            if (d !== dropdown) d.classList.remove('show');
+                        });
+                        
+                        dropdown.classList.toggle('show');
+                    }
+                });
+            });
+
+            // Fechar dropdown ao clicar fora
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.filter-box')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(d => {
+                        d.classList.remove('show');
+                    });
+                }
+            });
+
+            // Aplicar filtros
+            function aplicarFiltros() {
+                const grid = document.getElementById('campaignsGrid');
+                grid.innerHTML = '<div class="loading">Carregando...</div>';
+
+                const params = new URLSearchParams();
+                if (selectedFilters.generoId) params.append('generoId', selectedFilters.generoId);
+                if (selectedFilters.sistemaId) params.append('sistemaId', selectedFilters.sistemaId);
+                if (selectedFilters.modalidade) params.append('modalidade', selectedFilters.modalidade);
+                if (selectedFilters.categoria) params.append('categoria', selectedFilters.categoria);
+
+                fetch(`/Home/FiltrarMesas?${params.toString()}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        grid.innerHTML = html;
+                        atualizarBadges();
+                    })
+                    .catch(error => {
+                        console.error('Erro ao filtrar:', error);
+                        grid.innerHTML = '<div class="loading">Erro ao carregar as mesas. Tente novamente.</div>';
+                    });
+            }
+
+            function atualizarBadges() {
+                const clearBtn = document.getElementById('clearFilters');
+                let hasFilters = false;
+
+                // Genero
+                const generoBadge = document.getElementById('generoBadge');
+                if (selectedFilters.generoId) {
+                    const item = document.querySelector(`#generoDropdown [data-value="${selectedFilters.generoId}"]`);
+                    generoBadge.textContent = item.textContent;
+                    generoBadge.style.display = 'inline-block';
+                    hasFilters = true;
+                } else {
+                    generoBadge.style.display = 'none';
+                }
+
+                // Sistema
+                const sistemaBadge = document.getElementById('sistemaBadge');
+                if (selectedFilters.sistemaId) {
+                    const item = document.querySelector(`#sistemaDropdown [data-value="${selectedFilters.sistemaId}"]`);
+                    sistemaBadge.textContent = item.textContent;
+                    sistemaBadge.style.display = 'inline-block';
+                    hasFilters = true;
+                } else {
+                    sistemaBadge.style.display = 'none';
+                }
+
+                // Modalidade
+                const modalidadeBadge = document.getElementById('modalidadeBadge');
+                if (selectedFilters.modalidade) {
+                    modalidadeBadge.textContent = selectedFilters.modalidade;
+                    modalidadeBadge.style.display = 'inline-block';
+                    hasFilters = true;
+                } else {
+                    modalidadeBadge.style.display = 'none';
+                }
+
+                // Categoria
+                const categoriaBadge = document.getElementById('categoriaBadge');
+                if (selectedFilters.categoria) {
+                    categoriaBadge.textContent = selectedFilters.categoria;
+                    categoriaBadge.style.display = 'inline-block';
+                    hasFilters = true;
+                } else {
+                    categoriaBadge.style.display = 'none';
+                }
+
+                clearBtn.classList.toggle('show', hasFilters);
+            }
+
+            // Evento de clique nos itens
+            document.querySelectorAll('#generoDropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedFilters.generoId = this.dataset.value;
+                    aplicarFiltros();
+                });
+            });
+
+            document.querySelectorAll('#sistemaDropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedFilters.sistemaId = this.dataset.value;
+                    aplicarFiltros();
+                });
+            });
+
+            document.querySelectorAll('#modalidadeDropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedFilters.modalidade = this.dataset.value;
+                    aplicarFiltros();
+                });
+            });
+
+            document.querySelectorAll('#categoriaDropdown .dropdown-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectedFilters.categoria = this.dataset.value;
+                    aplicarFiltros();
+                });
+            });
+
+            // Limpar filtros
+            document.getElementById('clearFilters').addEventListener('click', function() {
+                selectedFilters = {
+                    generoId: '',
+                    sistemaId: '',
+                    modalidade: '',
+                    categoria: ''
+                };
+                aplicarFiltros();
+            });
+        });
+    </script>
+}

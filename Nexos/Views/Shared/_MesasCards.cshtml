@@ -1,0 +1,40 @@
+@model List<CampanhaMesa>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var campanhaMesa in Model)
+    {
+        <article class="card" tabindex="0"
+            aria-label="@campanhaMesa.Titulo_Campanha. Gênero @(campanhaMesa.Genero?.Nome_Genero ?? "Não especificado"). Mestre @campanhaMesa.Mestre.Nome. Jogadores @campanhaMesa.Numero_Jogadores">
+            <div class="card-image">
+                <img
+                    src="@(string.IsNullOrEmpty(campanhaMesa.Imagem_Capa) ? "/images/default-campaign.jpg" : campanhaMesa.Imagem_Capa)"
+                    alt="Capa da campanha @campanhaMesa.Titulo_Campanha"
+                    onerror="this.style.backgroundColor='#513b71'; this.style.height='200px';" />
+                    
+                <span class="tag">@(campanhaMesa.Genero?.Nome_Genero ?? "Diversos")</span>
+            </div>
+            <div class="card-content">
+                <strong>@campanhaMesa.Titulo_Campanha</strong>
+                <small style="font-size: 1.3rem;">Mestre: @campanhaMesa.Mestre.Nome - @campanhaMesa.Numero_Jogadores jogadores</small>
+                <div style="margin-top: 8px; font-size: 12px; color: #666;">
+                    <span style="color: #e3ddff; font-size: 1.4rem;">@campanhaMesa.Dias_Horarios</span><br/>
+                    <span style="color: #e3ddff; font-size: 1.4rem;">@campanhaMesa.Sistema.Nome_Sistema</span><br/>
+                    <span style="color: #e3ddff; font-size: 1.4rem;">@campanhaMesa.Modalidade</span>
+                </div>
+                <a href="@Url.Action("MesaDetalhes", "Home", new { id = campanhaMesa.ID_Campanha })" 
+                   class="btn btn-sm" 
+                   style="margin-top: 12px; display: inline-block; padding: 8px 16px; background: #513b71; color: white; text-decoration: none; border-radius: 6px;">
+                    Ver Detalhes
+                </a>
+            </div>
+        </article>
+    }
+}
+else
+{
+    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+        <h3 style="color: #666; margin-bottom: 12px;">Nenhuma mesa encontrada</h3>
+        <p style="color: #999;">Tente ajustar os filtros para encontrar mais opções.</p>
+    </div>
+}

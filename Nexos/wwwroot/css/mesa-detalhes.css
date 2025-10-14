@@ -2,7 +2,6 @@
 
 /* Hero Section - Mesa Detalhes */
 .hero-section-mesa {
-    background: linear-gradient(180deg, rgba(150, 120, 180, 0.8) 0%, rgba(45, 10, 49, 1) 100%);
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -247,3 +246,6 @@
     background: #782f81;
 }
 
+.span{
+    color: white;
+}
