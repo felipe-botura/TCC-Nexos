@@ -8,12 +8,12 @@
 }
 
 <!-- Hero Section -->
-<section class="hero-section-mesa" style="background-image: url('@Model.Imagem_Capa');">
+<section class="hero-section-mesa" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('@Model.Imagem_Capa'); background-size: cover;">
     <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-lg-8">
                 <h1 class="display-3 fw-bold mb-3">@Model.Titulo_Campanha</h1>
-                <p class="lead">Join a thrilling journey crafted by our experienced Game Master!</p>
+                <p class="lead">Junte-se a uma jornada emocionante criada pelo nosso Mestre de Jogo experiente!</p>
             </div>
         </div>
     </div>
@@ -25,15 +25,19 @@
         <div class="row align-items-center">
             <div class="col-md-2">
                 <div class="gm-avatar">
-                    <div class="avatar-placeholder rounded-circle"></div>
+                    <img src="@(Model.Mestre.Foto ?? Url.Content("~/img/usuarios/no-photo.png"))" 
+                         width="80" 
+                         height="80"
+                         class="object-fit-cover rounded-circle"
+                         alt="Foto do Mestre @Model.Mestre.Nome">
                 </div>
             </div>
             <div class="col-md-8">
-                <h4 class="fw-bold mb-2">Game Master: JohnDoe</h4>
-                <p class="mb-0">Step into a realm filled with adventure and peril as we explore the mystical forests of Eldaria.</p>
+                <h4 class="fw-bold mb-2">Game Master: @Model.Mestre.Nome</h4>
+                <p class="mb-0">Entre em um reino cheio de aventura e perigo enquanto exploramos as florestas místicas de Eldaria.</p>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-outline-light">Contact GM</button>
+                <button class="btn btn-outline-light">Contatar GM</button>
             </div>
         </div>
     </div>
@@ -48,17 +52,15 @@
             </div>
         </div>
         
-        <div class="row align-items-center">
-            <div class="col-lg-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
                 <div class="premissa-image">
-                    <div class="image-placeholder">
-                        <img src="@Model.Imagem_Capa" alt="">
-                    </div>
+                    <img src="@Model.Imagem_Capa" alt="Premissa da Campanha" class="img-fluid rounded shadow-lg" style="width: 100%; height: auto; object-fit: cover;">
                 </div>
             </div>
-            <div class="col-lg-7">
-                <div class="premissa-content">
-                    <p class="mb-4">
+            <div class="col-lg-6">
+                <div class="premissa-content ps-lg-4">
+                    <p class="lead mb-0">
                        @Model.Premissa_Campanha
                     </p>
                 </div>
@@ -77,63 +79,63 @@
         </div>
         
         <div class="expectativas-description mb-5">
-            <p class="text-center lead">
+            <p class="text-center lead mb-5">
                 @Model.O_Que_Esperar
             </p>
         </div>
 
         <!-- Cards de Informações -->
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+        <div class="row g-5 mt-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Faixa Etária</h5>
                     <p class="mb-2">@Model.Faixa_Etaria</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Sistema</h5>
-                    <p class="mb-2">@Model.ID_Sistema</p>
+                    <p class="mb-2">@Model.Sistema.Nome_Sistema</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Gênero</h5>
-                    <p class="mb-2">@Model.ID_Genero</p>
+                    <p class="mb-2">@Model.Genero.Nome_Genero</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Vagas Disponíveis</h5>
                     <p class="mb-2">@Model.Vagas_Disponiveis</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Dias e Horários</h5>
                     <p class="mb-2">@Model.Dias_Horarios</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;" style="margin: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Modalidade</h5>
                     <p class="mb-2">@Model.Modalidade</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Plataformas</h5>
                     <p class="mb-2">@Model.Plataformas</p>
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6" style="margin-Bottom: 10px;">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="info-card">
                     <h5 class="fw-bold mb-3">Requisitos</h5>
                     <p class="mb-2">@Model.Requisitos</p>
@@ -155,4 +157,3 @@
         </div>
     </div>
 </section>
-

@@ -19,7 +19,28 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        // Buscar as 3 últimas campanhas criadas
+        var ultimasCampanhas = _context.CampanhasMesas
+            .Include(c => c.Genero)
+            .Include(c => c.Sistema)
+            .Include(c => c.Mestre)
+            .OrderByDescending(c => c.DataCriacao)
+            .Take(3)
+            .ToList();
+        
+        // Buscar 2 campanhas para a seção "Explore mais"
+        var campanhasExplore = _context.CampanhasMesas
+            .Include(c => c.Genero)
+            .Include(c => c.Sistema)
+            .Include(c => c.Mestre)
+            .OrderByDescending(c => c.DataCriacao)
+            .Skip(3)
+            .Take(2)
+            .ToList();
+        
+        ViewBag.CampanhasExplore = campanhasExplore;
+        
+        return View(ultimasCampanhas);
     }
 
     public IActionResult AboutUs()

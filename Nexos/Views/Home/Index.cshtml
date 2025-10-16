@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Página Inicial";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var campanhasExplore = ViewBag.CampanhasExplore as List<CampanhaMesa>;
 }
 
 <!-- Slider Area Start-->
@@ -19,7 +20,7 @@
                                 até os mais variados Horrores Cómiscos.
                             </p>
                             <div class="slider-btns">
-                                <a data-animation="fadeInLeft" data-delay="1s" href="@Url.Action("Index","Mesas")" class="border-btn">Explorar mesas</a>
+                                <a data-animation="fadeInLeft" data-delay="1s" href="@Url.Action("Mesas","Home")" class="border-btn">Explorar mesas</a>
                             </div>
                         </div>
                     </div>
@@ -69,42 +70,30 @@
             </div>
         </div>
         <div class="row gx-5 gy-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="campaign-card">
-                    <span class="tag">Fantasia</span>
-                    <div class="card-img">
-                        <img src="@(Url.Content("~/img/campaigns/placeholder2.png"))" alt="Cover Fantasia" />
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var campanha in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="campaign-card">
+                            <span class="tag">@(campanha.Genero?.Nome_Genero ?? "Sem Gênero")</span>
+                            <div class="card-img">
+                                <img src="@(string.IsNullOrEmpty(campanha.Imagem_Capa) ? Url.Content("~/img/campaigns/placeholder2.png") : campanha.Imagem_Capa)" alt="@campanha.Titulo_Campanha" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@campanha.Titulo_Campanha</h5>
+                                <p class="card-meta">Mestre: @(campanha.Mestre?.Nome ?? "Desconhecido") • Players: @campanha.Numero_Jogadores</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">O Princípio</h5>
-                        <p class="card-meta">Mestre: Hemi Domiciano • Players: 5</p>
-                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p class="white-color">Nenhuma campanha disponível no momento.</p>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="campaign-card">
-                    <span class="tag">Sci-Fi</span>
-                    <div class="card-img">
-                        <img src="@(Url.Content("~/img/campaigns/placeholder2.png"))" alt="Cover Sci-Fi" />
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Guerras Galácticas</h5>
-                        <p class="card-meta">Mestre: Jane Smith • Players: 4</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="campaign-card">
-                    <span class="tag">Mistério</span>
-                    <div class="card-img">
-                        <img src="@(Url.Content("~/img/campaigns/placeholder2.png"))" alt="Cover Mistério" />
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Cataclisma</h5>
-                        <p class="card-meta">Mestre: Zelchi • Players: 6</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -117,43 +106,45 @@
             <div class="col-xl-8">
                 <h2 class="section-title white-color">Explore mais Mesas de RPG</h2>
                 <p class="white-color mb-30">Procure por toda a variedade de mesas criadas pelos nossos Mestres de RPG</p>
-                <a href="@Url.Action("Index","Mesas")" class="border-btn">Ver todas as mesas</a>
+                <a href="@Url.Action("Mesas","Home")" class="border-btn">Ver todas as mesas</a>
             </div>
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-10 mb-4">
-                <div class="horizontal-card">
-                    <div class="card-thumb">
-                        <img src="@(Url.Content("~/img/campaigns/placeholder2.png"))" alt="O Princípio" />
-                    </div>
-                    <div class="card-info">
-                        <h5 class="card-title">O Princípio</h5>
-                        <p class="card-desc">Uma campanha diferente de tudo que você já viu...</p>
-                        <div class="tags">
-                            <span class="tag">Fantasia</span>
-                            <span class="tag">Aventura</span>
-                            <span class="tag">Alta-Fantasia</span>
+            @if (campanhasExplore != null && campanhasExplore.Any())
+            {
+                @foreach (var campanha in campanhasExplore)
+                {
+                    <div class="col-lg-10 mb-4">
+                        <div class="horizontal-card">
+                            <div class="card-thumb">
+                                <img src="@(string.IsNullOrEmpty(campanha.Imagem_Capa) ? Url.Content("~/img/campaigns/placeholder2.png") : campanha.Imagem_Capa)" alt="@campanha.Titulo_Campanha" />
+                            </div>
+                            <div class="card-info">
+                                <h5 class="card-title">@campanha.Titulo_Campanha</h5>
+                                <p class="card-desc">@(campanha.Premissa_Campanha.Length > 100 ? campanha.Premissa_Campanha.Substring(0, 100) + "..." : campanha.Premissa_Campanha)</p>
+                                <div class="tags">
+                                    @if (campanha.Genero != null)
+                                    {
+                                        <span class="tag">@campanha.Genero.Nome_Genero</span>
+                                    }
+                                    @if (campanha.Sistema != null)
+                                    {
+                                        <span class="tag">@campanha.Sistema.Nome_Sistema</span>
+                                    }
+                                    <span class="tag">@campanha.Modalidade</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p class="white-color">Nenhuma campanha adicional disponível.</p>
                 </div>
-            </div>
-
-            <div class="col-lg-10 mb-4">
-                <div class="horizontal-card">
-                    <div class="card-thumb">
-                        <img src="@(Url.Content("~/img/campaigns/placeholder2.png"))" alt="Guerras Galácticas" />
-                    </div>
-                    <div class="card-info">
-                        <h5 class="card-title">Guerras Galácticas</h5>
-                        <p class="card-desc">Uma aventura pelo cosmos...</p>
-                        <div class="tags">
-                            <span class="tag">Sci-Fi</span>
-                            <span class="tag">Aventura</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
@@ -177,7 +168,7 @@
                                 <div class="single-testimonial text-center mt-55">
                                     <div class="testimonial-caption">
                                         <img src="@(Url.Content("~/img/icon/quotes-sign.png"))" alt="" class="quotes-sign" />
-                                        <p>“Nunca tinha conseguido manter uma campanha por mais de duas sessões...”</p>
+                                        <p>"Nunca tinha conseguido manter uma campanha por mais de duas sessões..."</p>
                                     </div>
                                     <div class="testimonial-founder d-flex align-items-center justify-content-center">
                                         <div class="founder-img">
@@ -192,7 +183,7 @@
                                 <div class="single-testimonial text-center mt-55">
                                     <div class="testimonial-caption">
                                         <img src="@(Url.Content("~/img/icon/quotes-sign.png"))" alt="" class="quotes-sign" />
-                                        <p>“Me mudei para uma nova cidade e não conhecia ninguém que jogasse RPG...”</p>
+                                        <p>"Me mudei para uma nova cidade e não conhecia ninguém que jogasse RPG..."</p>
                                     </div>
                                     <div class="testimonial-founder d-flex align-items-center justify-content-center">
                                         <div class="founder-img">
