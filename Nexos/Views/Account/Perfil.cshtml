@@ -1,0 +1,382 @@
+@model Nexos.ViewModels.PerfilVM
+@{
+    ViewData["Title"] = "Meu Perfil - Nexos";
+}
+
+<!doctype html>
+<html class="no-js" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="~/css/gijgo.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/animated-headline.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <style>
+        .profile-body {
+            background: linear-gradient(135deg, #2D0A31 0%, #4C1E51 100%);
+            min-height: 100vh;
+            padding: 50px 0;
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #4C1E51 0%, #6B2D71 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .profile-photo-section {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile-photo-preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #4C1E51;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .profile-photo-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4C1E51 0%, #6B2D71 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 5px solid #4C1E51;
+        }
+
+        .profile-photo-placeholder i {
+            font-size: 60px;
+            color: white;
+        }
+
+        .profile-form-section {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4C1E51;
+            box-shadow: 0 0 0 0.2rem rgba(76, 30, 81, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4C1E51 0%, #6B2D71 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 30, 81, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .text-danger {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #4C1E51;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background: #6B2D71;
+            transform: translateY(-2px);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Profile Page -->
+    <main class="profile-body">
+        <div class="profile-container">
+            <div class="profile-header">
+                <h2>Gerenciar Perfil</h2>
+                <p>Atualize suas informações pessoais</p>
+            </div>
+
+            <form asp-action="Perfil" asp-controller="Account" method="POST" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger mx-4 mt-3" role="alert"></div>
+
+                <!-- Seção de Foto de Perfil -->
+                <div class="profile-photo-section">
+                    @if (!string.IsNullOrEmpty(Model.FotoAtual))
+
+                    {
+                        <img src="@Model.FotoAtual" alt="Foto de Perfil" class="profile-photo-preview" id="photoPreview">
+                    }
+
+                    else
+
+                    {
+                        <div class="profile-photo-placeholder" id="photoPlaceholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <img src="#" alt="Foto de Perfil" class="profile-photo-preview" id="photoPreview"
+                            style="display: none;">
+                    }
+
+                    <label for="fotoInput" class="custom-file-upload">
+                        <i class="fas fa-camera"></i> Escolher Foto
+                    </label>
+                    <input type="file" id="fotoInput" asp-for="Foto" accept="image/*">
+                    <div class="file-name" id="fileName"></div>
+                    <input type="hidden" asp-for="FotoAtual" />
+                </div>
+
+                <!-- Seção de Formulário -->
+                <div class="profile-form-section">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Nome"></label>
+                                <input class="form-control" asp-for="Nome" placeholder="Seu nome completo" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input class="form-control" asp-for="Email" placeholder="seu@email.com" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="DataNascimento"></label>
+                                <input class="form-control" asp-for="DataNascimento" type="date" />
+                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserName"></label>
+                                <input class="form-control" asp-for="UserName" readonly
+                                    style="background-color: #f0f0f0;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancelar
+                            </a>
+                        </div>
+                        <a href="@Url.Action("AlterarSenha", "Account")" class="btn btn-warning">
+                            <i class="fas fa-key"></i> Alterar Senha
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="~/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/jquery.vide.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/slick.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/animated.headline.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/gijgo.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/js/jquery.barfiller.js"></script>
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/jquery.countdown.min.js"></script>
+    <script src="~/js/hover-direction-snake.min.js"></script>
+    <script src="~/js/contact.js"></script>
+    <script src="~/js/jquery.form.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/mail-script.js"></script>
+    <script src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+        // Preview da foto
+        document.getElementById('fotoInput').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('photoPreview').src = e.target.result;
+                    document.getElementById('photoPreview').style.display = 'block';
+                    const placeholder = document.getElementById('photoPlaceholder');
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                }
+                reader.readAsDataURL(file);
+                document.getElementById('fileName').textContent = 'Arquivo selecionado: ' + file.name;
+            }
+        });
+
+        // Mensagens de erro
+        let mensagemErro = '';
+        $(".validation-summary-errors ul li").each(function () {
+            mensagemErro += $(this).text() + '<br />';
+        });
+        if (mensagemErro != '')
+            Swal.fire(
+                'Erro ao Atualizar',
+                mensagemErro,
+                'error'
+            );
+
+        // Mensagem de sucesso
+        @if (TempData["Success"] != null)
+        {
+            <text>
+                    Swal.fire(
+                    'Sucesso!',
+                    '@TempData["Success"]',
+                    'success'
+                    );
+            </text>
+        }
+    </script>
+
+</body>
+
+</html>

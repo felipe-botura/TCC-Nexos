@@ -1,0 +1,285 @@
+@model Nexos.ViewModels.AlterarSenhaVM
+@{
+    ViewData["Title"] = "Alterar Senha - Nexos";
+}
+
+<!doctype html>
+<html class="no-js" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/slicknav.css">
+    <link rel="stylesheet" href="~/css/flaticon.css">
+    <link rel="stylesheet" href="~/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="~/css/gijgo.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/animated-headline.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/css/slick.css">
+    <link rel="stylesheet" href="~/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <style>
+        .password-body {
+            background: linear-gradient(135deg, #2D0A31 0%, #4C1E51 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+        }
+
+        .password-container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .password-header {
+            background: linear-gradient(135deg, #4C1E51 0%, #6B2D71 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .password-header h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .password-header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+
+        .password-form-section {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #4C1E51;
+            box-shadow: 0 0 0 0.2rem rgba(76, 30, 81, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4C1E51 0%, #6B2D71 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 30, 81, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+
+        .text-danger {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .password-requirements {
+            background: #f8f9fa;
+            border-left: 4px solid #4C1E51;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .password-requirements h6 {
+            margin: 0 0 10px;
+            font-weight: 600;
+            color: #4C1E51;
+        }
+
+        .password-requirements ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        .password-requirements li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Password Change Page -->
+    <main class="password-body">
+        <div class="password-container">
+            <div class="password-header">
+                <h2><i class="fas fa-key"></i> Alterar Senha</h2>
+                <p>Mantenha sua conta segura</p>
+            </div>
+
+            <form asp-action="AlterarSenha" asp-controller="Account" method="POST">
+                <div class="password-form-section">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="password-requirements">
+                        <h6><i class="fas fa-info-circle"></i> Requisitos da Senha</h6>
+                        <ul>
+                            <li>Mínimo de 6 caracteres</li>
+                            <li>Máximo de 20 caracteres</li>
+                            <li>Recomendado: letras, números e caracteres especiais</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="SenhaAtual">
+                            <i class="fas fa-lock"></i> Senha Atual
+                        </label>
+                        <input class="form-control" asp-for="SenhaAtual" type="password"
+                            placeholder="Digite sua senha atual" />
+                        <span asp-validation-for="SenhaAtual" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NovaSenha">
+                            <i class="fas fa-lock-open"></i> Nova Senha
+                        </label>
+                        <input class="form-control" asp-for="NovaSenha" type="password"
+                            placeholder="Digite sua nova senha" />
+                        <span asp-validation-for="NovaSenha" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ConfirmarNovaSenha">
+                            <i class="fas fa-check-circle"></i> Confirmar Nova Senha
+                        </label>
+                        <input class="form-control" asp-for="ConfirmarNovaSenha" type="password"
+                            placeholder="Confirme sua nova senha" />
+                        <span asp-validation-for="ConfirmarNovaSenha" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Alterar Senha
+                    </button>
+
+                    <a href="@Url.Action("Perfil", "Account")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Voltar ao Perfil
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="~/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/jquery.vide.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/slick.min.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script src="~/js/animated.headline.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/gijgo.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/js/jquery.barfiller.js"></script>
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/jquery.countdown.min.js"></script>
+    <script src="~/js/hover-direction-snake.min.js"></script>
+    <script src="~/js/contact.js"></script>
+    <script src="~/js/jquery.form.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/mail-script.js"></script>
+    <script src="~/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+        // Mensagens de erro
+        let mensagemErro = '';
+        $(".validation-summary-errors ul li").each(function () {
+            mensagemErro += $(this).text() + '<br />';
+        });
+        if (mensagemErro != '')
+            Swal.fire(
+                'Erro ao Alterar Senha',
+                mensagemErro,
+                'error'
+            );
+
+        // Mensagem de sucesso
+        @if (TempData["Success"] != null)
+        {
+            <text>
+                    Swal.fire(
+                    'Sucesso!',
+                    '@TempData["Success"]',
+                    'success'
+                    );
+            </text>
+        }
+    </script>
+
+</body>
+
+</html>

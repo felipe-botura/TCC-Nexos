@@ -4,7 +4,7 @@
 {
     @foreach (var campanhaMesa in Model)
     {
-        <article class="card" tabindex="0"
+        <article class="card campaign-card" tabindex="0"
             aria-label="@campanhaMesa.Titulo_Campanha. Gênero @(campanhaMesa.Genero?.Nome_Genero ?? "Não especificado"). Mestre @campanhaMesa.Mestre.Nome. Jogadores @campanhaMesa.Numero_Jogadores">
             <div class="card-image">
                 <img
