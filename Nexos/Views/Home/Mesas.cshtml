@@ -19,7 +19,8 @@
     <section class="filters" aria-label="Filtros para pesquisa de campanhas">
         <!-- Filtro de Gênero -->
         <div class="filter-box" id="generoFilter" tabindex="0" aria-label="Filtro de gêneros">
-            <strong class="dropdown-toggle">Gênero <span class="filter-badge" id="generoBadge" style="display:none;"></span></strong>
+            <strong class="dropdown-toggle">Gênero <span class="filter-badge" id="generoBadge"
+                    style="display:none;"></span></strong>
             <span>Fantasia, Horror, sci-fi mistério...</span>
             <div class="dropdown-menu" id="generoDropdown">
                 <div class="dropdown-item" data-value="">Todos os gêneros</div>
@@ -32,7 +33,8 @@
 
         <!-- Filtro de Sistema -->
         <div class="filter-box" id="sistemaFilter" tabindex="0" aria-label="Filtro de sistemas de jogo">
-            <strong class="dropdown-toggle">Sistema <span class="filter-badge" id="sistemaBadge" style="display:none;"></span></strong>
+            <strong class="dropdown-toggle">Sistema <span class="filter-badge" id="sistemaBadge"
+                    style="display:none;"></span></strong>
             <span>Dungeons & Dragons, Pathfinder, etc.</span>
             <div class="dropdown-menu" id="sistemaDropdown">
                 <div class="dropdown-item" data-value="">Todos os sistemas</div>
@@ -45,7 +47,8 @@
 
         <!-- Filtro de Modalidade -->
         <div class="filter-box" id="modalidadeFilter" tabindex="0" aria-label="Filtro de modalidade">
-            <strong class="dropdown-toggle">Modalidade <span class="filter-badge" id="modalidadeBadge" style="display:none;"></span></strong>
+            <strong class="dropdown-toggle">Modalidade <span class="filter-badge" id="modalidadeBadge"
+                    style="display:none;"></span></strong>
             <span>Escolha entre presencial ou online</span>
             <div class="dropdown-menu" id="modalidadeDropdown">
                 <div class="dropdown-item" data-value="">Todas as modalidades</div>
@@ -57,7 +60,8 @@
 
         <!-- Filtro de Categoria -->
         <div class="filter-box" id="categoriaFilter" tabindex="0" aria-label="Filtro de categoria">
-            <strong class="dropdown-toggle">Categoria <span class="filter-badge" id="categoriaBadge" style="display:none;"></span></strong>
+            <strong class="dropdown-toggle">Categoria <span class="filter-badge" id="categoriaBadge"
+                    style="display:none;"></span></strong>
             <span>One-shot, campanha longa, etc...</span>
             <div class="dropdown-menu" id="categoriaDropdown">
                 <div class="dropdown-item" data-value="">Todas as categorias</div>
@@ -84,122 +88,191 @@
 </main>
 
 @section Scripts {
-<script>
-    let page = 1;
-    const pageSize = @ViewBag.PageSize;
-    const grid = document.getElementById('campaignsGrid');
-    const btnMais = document.getElementById('btnCarregarMais');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let page = 1;
+            const pageSize = parseInt(document.getElementById('campaignsGrid')?.dataset.pageSize || '9');
+            const grid = document.getElementById('campaignsGrid');
+            const btnMais = document.getElementById('btnCarregarMais');
 
-    let selectedFilters = {
-        generoId: '',
-        sistemaId: '',
-        modalidade: '',
-        categoria: ''
-    };
+            let selectedFilters = {
+                generoId: '',
+                sistemaId: '',
+                modalidade: '',
+                categoria: ''
+            };
 
-    // 🔹 Clique no botão "Carregar mais"
-    if (btnMais) {
-        btnMais.addEventListener('click', () => {
-            page++;
-            const params = new URLSearchParams({
-                page: page,
-                pageSize: pageSize,
-                generoId: selectedFilters.generoId,
-                sistemaId: selectedFilters.sistemaId,
-                modalidade: selectedFilters.modalidade,
-                categoria: selectedFilters.categoria
+            // Gerenciamento dos dropdowns de filtro (ISOLADO)
+            const filterBoxes = document.querySelectorAll('.filters .filter-box');
+
+            filterBoxes.forEach(box => {
+                const dropdown = box.querySelector('.dropdown-menu');
+
+                // Toggle dropdown ao clicar no filter-box
+                box.addEventListener('click', function (e) {
+                    // Evita que cliques nos itens fechem o dropdown
+                    if (e.target.classList.contains('dropdown-item')) {
+                        return;
+                    }
+
+                    e.stopPropagation(); // Impede propagação para não conflitar com outros dropdowns
+
+                    // Fecha outros dropdowns de filtro
+                    filterBoxes.forEach(otherBox => {
+                        if (otherBox !== box) {
+                            const otherDropdown = otherBox.querySelector('.dropdown-menu');
+                            if (otherDropdown) {
+                                otherDropdown.classList.remove('show');
+                                otherBox.classList.remove('active');
+                            }
+                        }
+                    });
+
+                    // Toggle do dropdown atual
+                    if (dropdown) {
+                        const isOpen = dropdown.classList.contains('show');
+                        dropdown.classList.toggle('show');
+                        box.classList.toggle('active');
+                    }
+                });
             });
 
-            fetch(`/Home/CarregarMaisMesas?${params.toString()}`)
-                .then(resp => resp.text())
-                .then(html => {
-                    const temp = document.createElement('div');
-                    temp.innerHTML = html;
-                    const novos = temp.querySelectorAll('.campaign-card');
-
-                    if (novos.length > 0) {
-                        novos.forEach(card => grid.appendChild(card));
-                    } else {
-                        btnMais.remove();
-                    }
-                })
-                .catch(err => console.error(err));
-        });
-    }
-
-    // 🔹 Filtros (mantém os que você já tinha)
-    document.addEventListener('DOMContentLoaded', function() {
-
-        // Dropdown toggle
-        document.querySelectorAll('.filter-box').forEach(box => {
-            box.addEventListener('click', function(e) {
-                if (!e.target.classList.contains('dropdown-item')) {
-                    const dropdown = this.querySelector('.dropdown-menu');
-                    document.querySelectorAll('.dropdown-menu').forEach(d => {
-                        if (d !== dropdown) d.classList.remove('show');
+            // Fecha dropdowns ao clicar fora
+            document.addEventListener('click', function (e) {
+                // Verifica se o clique foi fora dos filter-boxes
+                if (!e.target.closest('.filters .filter-box') && !e.target.closest('.nav-item.dropdown')) {
+                    filterBoxes.forEach(box => {
+                        const dropdown = box.querySelector('.dropdown-menu');
+                        if (dropdown) {
+                            dropdown.classList.remove('show');
+                            box.classList.remove('active');
+                        }
                     });
-                    dropdown.classList.toggle('show');
                 }
             });
-        });
 
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.filter-box')) {
-                document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
+            // Gerenciamento dos itens do dropdown
+            function setupDropdownItems(dropdownId, filterKey, badgeId) {
+                const items = document.querySelectorAll(`#${dropdownId} .dropdown-item`);
+                const badge = document.getElementById(badgeId);
+
+                items.forEach(item => {
+                    item.addEventListener('click', function (e) {
+                        e.stopPropagation(); // Previne fechamento do dropdown
+
+                        const value = this.dataset.value;
+                        selectedFilters[filterKey] = value;
+
+                        // Remove seleção de outros itens
+                        items.forEach(i => i.classList.remove('selected'));
+
+                        // Adiciona seleção ao item clicado
+                        this.classList.add('selected');
+
+                        // Atualiza badge
+                        if (value && value !== '') {
+                            badge.textContent = '1';
+                            badge.style.display = 'inline-block';
+                        } else {
+                            badge.style.display = 'none';
+                        }
+
+                        // Fecha o dropdown após seleção
+                        const dropdown = this.closest('.dropdown-menu');
+                        const filterBox = this.closest('.filter-box');
+                        if (dropdown && filterBox) {
+                            dropdown.classList.remove('show');
+                            filterBox.classList.remove('active');
+                        }
+
+                        // Aplica filtros
+                        aplicarFiltros();
+                    });
+                });
+            }
+
+            // Setup para cada filtro
+            setupDropdownItems('generoDropdown', 'generoId', 'generoBadge');
+            setupDropdownItems('sistemaDropdown', 'sistemaId', 'sistemaBadge');
+            setupDropdownItems('modalidadeDropdown', 'modalidade', 'modalidadeBadge');
+            setupDropdownItems('categoriaDropdown', 'categoria', 'categoriaBadge');
+
+            // Função para aplicar filtros
+            function aplicarFiltros() {
+                page = 1;
+                const params = new URLSearchParams({
+                    page: 1,
+                    pageSize: pageSize,
+                    generoId: selectedFilters.generoId,
+                    sistemaId: selectedFilters.sistemaId,
+                    modalidade: selectedFilters.modalidade,
+                    categoria: selectedFilters.categoria
+                });
+
+                fetch(`/Home/CarregarMaisMesas?${params.toString()}`)
+                    .then(resp => resp.text())
+                    .then(html => {
+                        if (grid) {
+                            grid.innerHTML = html;
+                        }
+                        if (btnMais) {
+                            btnMais.style.display = 'block';
+                        }
+                    })
+                    .catch(err => console.error('Erro ao aplicar filtros:', err));
+            }
+
+            // Botão "Carregar mais"
+            if (btnMais) {
+                btnMais.addEventListener('click', () => {
+                    page++;
+                    const params = new URLSearchParams({
+                        page: page,
+                        pageSize: pageSize,
+                        generoId: selectedFilters.generoId,
+                        sistemaId: selectedFilters.sistemaId,
+                        modalidade: selectedFilters.modalidade,
+                        categoria: selectedFilters.categoria
+                    });
+
+                    fetch(`/Home/CarregarMaisMesas?${params.toString()}`)
+                        .then(resp => resp.text())
+                        .then(html => {
+                            const temp = document.createElement('div');
+                            temp.innerHTML = html;
+                            const novos = temp.querySelectorAll('.campaign-card');
+
+                            if (novos.length > 0 && grid) {
+                                novos.forEach(card => grid.appendChild(card));
+                            } else if (btnMais) {
+                                btnMais.style.display = 'none';
+                            }
+                        })
+                        .catch(err => console.error('Erro ao carregar mais:', err));
+                });
+            }
+
+            // Botão "Limpar filtros"
+            const clearFiltersBtn = document.getElementById('clearFilters');
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', function () {
+                    // Reseta filtros
+                    selectedFilters = { generoId: '', sistemaId: '', modalidade: '', categoria: '' };
+
+                    // Remove seleções visuais
+                    document.querySelectorAll('.filters .dropdown-item').forEach(item => {
+                        item.classList.remove('selected');
+                    });
+
+                    // Esconde badges
+                    document.querySelectorAll('.filter-badge').forEach(badge => {
+                        badge.style.display = 'none';
+                    });
+
+                    // Aplica filtros vazios
+                    aplicarFiltros();
+                });
             }
         });
-
-        function aplicarFiltros() {
-            page = 1; // resetar página ao aplicar filtro
-            const params = new URLSearchParams({
-                page: 1,
-                pageSize: pageSize,
-                generoId: selectedFilters.generoId,
-                sistemaId: selectedFilters.sistemaId,
-                modalidade: selectedFilters.modalidade,
-                categoria: selectedFilters.categoria
-            });
-
-            fetch(`/Home/CarregarMaisMesas?${params.toString()}`)
-                .then(resp => resp.text())
-                .then(html => {
-                    grid.innerHTML = html;
-                    if (btnMais) btnMais.style.display = 'block';
-                });
-        }
-
-        document.querySelectorAll('#generoDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                selectedFilters.generoId = this.dataset.value;
-                aplicarFiltros();
-            });
-        });
-
-        document.querySelectorAll('#sistemaDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                selectedFilters.sistemaId = this.dataset.value;
-                aplicarFiltros();
-            });
-        });
-
-        document.querySelectorAll('#modalidadeDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                selectedFilters.modalidade = this.dataset.value;
-                aplicarFiltros();
-            });
-        });
-
-        document.querySelectorAll('#categoriaDropdown .dropdown-item').forEach(item => {
-            item.addEventListener('click', function() {
-                selectedFilters.categoria = this.dataset.value;
-                aplicarFiltros();
-            });
-        });
-
-        document.getElementById('clearFilters').addEventListener('click', function() {
-            selectedFilters = { generoId: '', sistemaId: '', modalidade: '', categoria: '' };
-            aplicarFiltros();
-        });
-    });
-</script>
+    </script>
 }
