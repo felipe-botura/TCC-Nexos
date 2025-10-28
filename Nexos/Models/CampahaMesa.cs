@@ -30,6 +30,9 @@ namespace Nexos.Models
         [Required]
         public string Status_Campanha { get; set; }
 
+
+        public string Categoria { get; set; }
+
         [Required]
         public int Vagas_Disponiveis { get; set; }
 
