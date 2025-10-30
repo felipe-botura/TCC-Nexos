@@ -124,6 +124,7 @@ namespace Nexos.Data
                     Plataformas = "Discord, Roll20",
                     Requisitos = "Microfone",
                     Numero_Jogadores = 5,
+                    Categoria = "Campanha longa",
                     ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
                     DataCriacao = DateTime.Now.AddDays(-1)
                 },
@@ -143,6 +144,7 @@ namespace Nexos.Data
                     Plataformas = "N/A",
                     Requisitos = "Disposição para o terror",
                     Numero_Jogadores = 4,
+                    Categoria = "One-shot",
                     ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
                     DataCriacao = DateTime.Now.AddDays(-5)
                 },
@@ -162,6 +164,7 @@ namespace Nexos.Data
                     Plataformas = "Discord",
                     Requisitos = "Câmera e microfone",
                     Numero_Jogadores = 6,
+                    Categoria = "Campanha longa",
                     ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
                     DataCriacao = DateTime.Now.AddDays(-10)
                 },
@@ -181,6 +184,7 @@ namespace Nexos.Data
                     Plataformas = "Foundry VTT",
                     Requisitos = "Conhecimento básico do sistema",
                     Numero_Jogadores = 5,
+                    Categoria = "Mini-campanha",
                     ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
                     DataCriacao = DateTime.Now.AddDays(-15)
                 },
@@ -200,6 +204,7 @@ namespace Nexos.Data
                     Plataformas = "Discord",
                     Requisitos = "Interpretação madura",
                     Numero_Jogadores = 4,
+                    Categoria = "Campanha longa",
                     ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
                     DataCriacao = DateTime.Now.AddDays(-20)
                 },
@@ -219,6 +224,7 @@ namespace Nexos.Data
                     Plataformas = "N/A",
                     Requisitos = "Disponibilidade semanal",
                     Numero_Jogadores = 6,
+                    Categoria = "Campanha longa",
                     ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
                     DataCriacao = DateTime.Now.AddDays(-25)
                 },
@@ -238,6 +244,7 @@ namespace Nexos.Data
                     Plataformas = "Discord",
                     Requisitos = "Boa vontade para rir",
                     Numero_Jogadores = 5,
+                    Categoria = "Mini-campanha",
                     ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
                     DataCriacao = DateTime.Now.AddDays(-30)
                 },
@@ -257,6 +264,7 @@ namespace Nexos.Data
                     Plataformas = "Discord, Roll20",
                     Requisitos = "Gosto por enigmas",
                     Numero_Jogadores = 5,
+                    Categoria = "Mini-campanha",
                     ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
                     DataCriacao = DateTime.Now.AddDays(-35)
                 },
@@ -276,6 +284,7 @@ namespace Nexos.Data
                     Plataformas = "N/A",
                     Requisitos = "Curiosidade e criatividade",
                     Numero_Jogadores = 6,
+                    Categoria = "Campanha longa",
                     ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
                     DataCriacao = DateTime.Now.AddDays(-40)
                 },
@@ -295,6 +304,7 @@ namespace Nexos.Data
             Plataformas = "Discord",
             Requisitos = "Interpretação madura",
             Numero_Jogadores = 4,
+            Categoria = "One-shot",
             ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
             DataCriacao = DateTime.Now.AddDays(-45)
         },
@@ -314,6 +324,7 @@ namespace Nexos.Data
             Plataformas = "N/A",
             Requisitos = "Espírito aventureiro",
             Numero_Jogadores = 6,
+            Categoria = "Mini-campanha",
             ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
             DataCriacao = DateTime.Now.AddDays(-50)
         },
@@ -333,6 +344,7 @@ namespace Nexos.Data
             Plataformas = "Discord",
             Requisitos = "Microfone e boa conexão",
             Numero_Jogadores = 5,
+            Categoria = "Campanha longa",
             ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
             DataCriacao = DateTime.Now.AddDays(-55)
         },
@@ -352,6 +364,7 @@ namespace Nexos.Data
             Plataformas = "Foundry VTT",
             Requisitos = "Imaginação livre",
             Numero_Jogadores = 6,
+            Categoria = "Mini-campanha",
             ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
             DataCriacao = DateTime.Now.AddDays(-60)
         },
@@ -371,6 +384,7 @@ namespace Nexos.Data
             Plataformas = "N/A",
             Requisitos = "Disponibilidade constante",
             Numero_Jogadores = 4,
+            Categoria = "Campanha longa",
             ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
             DataCriacao = DateTime.Now.AddDays(-65)
         },
@@ -390,6 +404,7 @@ namespace Nexos.Data
             Plataformas = "Discord",
             Requisitos = "Interpretação intensa",
             Numero_Jogadores = 4,
+            Categoria = "Campanha longa",
             ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
             DataCriacao = DateTime.Now.AddDays(-70)
         },
@@ -409,6 +424,7 @@ namespace Nexos.Data
             Plataformas = "Roll20",
             Requisitos = "Conhecimento básico do sistema",
             Numero_Jogadores = 5,
+            Categoria = "One-shot",
             ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
             DataCriacao = DateTime.Now.AddDays(-75)
         },
@@ -428,6 +444,7 @@ namespace Nexos.Data
             Plataformas = "Discord",
             Requisitos = "Curiosidade científica",
             Numero_Jogadores = 6,
+            Categoria = "Campanha longa",
             ID_Mestre = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
             DataCriacao = DateTime.Now.AddDays(-80)
         },
@@ -447,6 +464,7 @@ namespace Nexos.Data
             Plataformas = "Foundry VTT",
             Requisitos = "Paixão por mitologia",
             Numero_Jogadores = 5,
+            Categoria = "Campanha longa",
             ID_Mestre = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
             DataCriacao = DateTime.Now.AddDays(-85)
     }

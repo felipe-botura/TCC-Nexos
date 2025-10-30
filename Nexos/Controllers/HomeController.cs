@@ -191,8 +191,11 @@ public class HomeController : Controller
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CriarMesa([Bind("ID_Campanha,Titulo_Campanha,ID_Mestre,Premissa_Campanha,O_Que_Esperar,Imagem_Capa,Status_Campanha,Vagas_Disponiveis,Faixa_Etaria,ID_Sistema,ID_Genero,Dias_Horarios,Modalidade,Plataformas,Requisitos,Numero_Jogadores,DataCriacao")] CampanhaMesa campanhaMesa, IFormFile imagemCapaFile)
+    public async Task<IActionResult> CriarMesa([Bind("ID_Campanha,Titulo_Campanha,ID_Mestre,Premissa_Campanha,O_Que_Esperar,Imagem_Capa,Status_Campanha,Categoria,Vagas_Disponiveis,Faixa_Etaria,ID_Sistema,ID_Genero,Dias_Horarios,Modalidade,Plataformas,Requisitos,Numero_Jogadores,DataCriacao")] CampanhaMesa campanhaMesa, IFormFile imagemCapaFile)
     {
+        ModelState.Remove("ID_Mestre");
+        ModelState.Remove("Mestre");
+        
         if (ModelState.IsValid)
         {
             // Obter o usuário atual e definir como mestre
@@ -200,35 +203,45 @@ public class HomeController : Controller
             campanhaMesa.ID_Mestre = userId;
             campanhaMesa.DataCriacao = DateTime.Now;
 
-            if (ModelState.IsValid)
+            // A lógica de upload de imagem e salvamento no banco de dados
+            if (imagemCapaFile != null && imagemCapaFile.Length > 0)
             {
-                if (imagemCapaFile != null && imagemCapaFile.Length > 0)
+                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "campaigns");
+                if (!Directory.Exists(uploadsFolder))
                 {
-                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "campaigns");
-                    if (!Directory.Exists(uploadsFolder))
-                    {
-                        Directory.CreateDirectory(uploadsFolder);
-                    }
-
-                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + imagemCapaFile.FileName;
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await imagemCapaFile.CopyToAsync(fileStream);
-                    }
-                    campanhaMesa.Imagem_Capa = "/img/campaigns/" + uniqueFileName;
-                }
-                else
-                {
-                    // Define uma imagem padrão se nenhuma for enviada
-                    campanhaMesa.Imagem_Capa = "/img/campaigns/placeholder1.png";
+                    Directory.CreateDirectory(uploadsFolder);
                 }
 
-                _context.Add(campanhaMesa);
-                await _context.SaveChangesAsync();
-                TempData["Success"] = "Mesa criada com sucesso!";
-                return RedirectToAction("Mesas", "Home");
+                var uniqueFileName = Guid.NewGuid().ToString() + "_" + imagemCapaFile.FileName;
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imagemCapaFile.CopyToAsync(fileStream);
+                }
+                campanhaMesa.Imagem_Capa = "/img/campaigns/" + uniqueFileName;
+            }
+            else
+            {
+                // Define uma imagem padrão se nenhuma for enviada
+                campanhaMesa.Imagem_Capa = "/img/campaigns/placeholder1.png";
+            }
+
+            _context.Add(campanhaMesa);
+            await _context.SaveChangesAsync();
+            TempData["Success"] = "Mesa criada com sucesso!";
+            return RedirectToAction("Mesas", "Home");
+        }
+        else
+        {
+            // Logar erros de validação
+            foreach (var modelStateKey in ModelState.Keys)
+            {
+                var modelStateVal = ModelState[modelStateKey];
+                foreach (var error in modelStateVal.Errors)
+                {
+                    _logger.LogError("Erro de validação no campo '{FieldName}': {ErrorMessage}", modelStateKey, error.ErrorMessage);
+                }
             }
         }
 

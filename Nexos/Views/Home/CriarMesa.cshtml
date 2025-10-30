@@ -296,6 +296,16 @@
                     </div>
                 </div>
 
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label asp-for="ID_Genero" class="form-label">Gênero</label>
+                        <select asp-for="ID_Genero" class="form-select" asp-items="ViewBag.ID_Genero">
+                            <option value="">Selecione o gênero da sua campanha</option>
+                        </select>
+                        <span asp-validation-for="ID_Genero" class="text-danger"></span>
+                    </div>
+                </div>
+
                 <!-- Status e Modalidade -->
                 <h3 class="section-title mt-5">Status</h3>
                 <div class="row mb-4">
@@ -318,205 +328,103 @@
                         </div>
                         <span asp-validation-for="Status_Campanha" class="text-danger"></span>
                     </div>
-                </div>
-
-                <!-- Status -->
-                <h3 class="section-title mt-5">Status</h3>
-                <div class="row mb-4">
                     <div class="col-md-6">
-                        <label class="form-label">Selecione o status atual da campanha</label>
+                        <label class="form-label">Selecione a modalidade da campanha</label>
                         <div class="tags-container">
-                            <input type="radio" name="Status_Campanha" value="Ativa" id="statusAtiva"
+                            <input type="radio" name="Modalidade" value="Online" id="modalidadeOnline"
                                 style="display: none;" />
-                            <label for="statusAtiva" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">
-                                Ativa
-                            </label>
-
-                            <input type="radio" name="Status_Campanha" value="Em breve" id="statusBreve"
-                                style="display: none;" />
-                            <label for="statusBreve" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">
-                                Em breve
-                            </label>
-                        </div>
-                        <span asp-validation-for="Status_Campanha" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- Categoria -->
-                <h3 class="section-title mt-5">Categoria</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 30px;">
-                    Escolha a categoria da sua campanha
-                </p>
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <div class="tags-container">
-                            <input type="radio" name="Categoria" value="One-shot" id="catOneShot"
-                                style="display: none;" />
-                            <label for="catOneShot" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">
-                                One-shot
-                            </label>
-
-                            <input type="radio" name="Categoria" value="Campanha Longa" id="catCampanhaLonga"
-                                style="display: none;" />
-                            <label for="catCampanhaLonga" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">
-                                Campanha Longa
-                            </label>
-
-                            <input type="radio" name="Categoria" value="Mini-campanha" id="catMiniCampanha"
-                                style="display: none;" />
-                            <label for="catMiniCampanha" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">
-                                Mini-campanha
-                            </label>
-                        </div>
-                        <span asp-validation-for="Categoria" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- Modalidade -->
-
-                <!-- Modalidade -->
-                <h3 class="section-title mt-5">Modalidade</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 30px;">
-                    Escolha a modalidade que melhor se encaixa para você e para os futuros players da mesa
-                </p>
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <div class="tags-container">
-                            <input type="radio" name="Modalidade" value="Presencial" id="modalPresencial"
-                                style="display: none;" />
-                            <label for="modalPresencial" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">
-                                Presencial
-                            </label>
-
-                            <input type="radio" name="Modalidade" value="Online" id="modalOnline"
-                                style="display: none;" />
-                            <label for="modalOnline" class="tag-button"
+                            <label for="modalidadeOnline" class="tag-button"
                                 onclick="this.previousElementSibling.checked = true">
                                 Online
+                            </label>
+
+                            <input type="radio" name="Modalidade" value="Presencial" id="modalidadePresencial"
+                                style="display: none;" />
+                            <label for="modalidadePresencial" class="tag-button"
+                                onclick="this.previousElementSibling.checked = true">
+                                Presencial
                             </label>
                         </div>
                         <span asp-validation-for="Modalidade" class="text-danger"></span>
                     </div>
                 </div>
 
-                <!-- Plataforma -->
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <label class="form-label">Plataforma</label>
-                        <input asp-for="Plataformas" class="form-control"
-                            placeholder="Plataformas que você usará, como discord, owlbear, roll20..." />
-                        <span asp-validation-for="Plataformas" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- Premissa da campanha -->
-                <h3 class="section-title mt-5">Premissa da campanha</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 30px;">
-                    Um texto que fale tudo que você precisa saber inicialmente sobre a campanha que será inicialmente
-                    para
-                    os futuros players esperem para campanha
-                </p>
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <textarea asp-for="Premissa_Campanha" class="form-control"
-                            placeholder="Fale sobre o que é a campanha, seu cenário, história, para atrair mais futuros jogadores!"></textarea>
-                        <span asp-validation-for="Premissa_Campanha" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- O que esperar -->
-                <h3 class="section-title mt-5">O que esperar</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 30px;">
-                    Fale suas expectativas enquanto mestre, isso pode alistar a atenção dos futuros players da campanha
-                </p>
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <textarea asp-for="O_Que_Esperar" class="form-control"
-                            placeholder="Quais suas expectativas?"></textarea>
-                        <span asp-validation-for="O_Que_Esperar" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- Requisitos -->
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <label class="form-label">Requisitos</label>
-                        <input asp-for="Requisitos" class="form-control"
-                            placeholder="Requisitos específicos como microfone, câmera, livros do sistema, etc..." />
-                        <span asp-validation-for="Requisitos" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <!-- Vagas disponíveis -->
-                <h3 class="section-title mt-5">Vagas disponíveis</h3>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 30px;">
-                    Selecione quantas tem disponível para a sua campanha
-                </p>
+                <!-- Vagas e Faixa Etária -->
+                <h3 class="section-title mt-5">Vagas e Faixa Etária</h3>
                 <div class="row mb-4">
                     <div class="col-md-6">
+                        <label class="form-label">Número de Vagas</label>
                         <div class="vagas-control">
                             <button type="button" class="vagas-button" onclick="decrementVagas()">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <div class="vagas-display" id="vagasDisplay">0</div>
+                            <span id="vagasDisplay" class="vagas-display">5</span>
+                            <input type="hidden" asp-for="Vagas_Disponiveis" id="vagasInput" value="5" />
+                            <input type="hidden" asp-for="Numero_Jogadores" id="jogadoresInput" value="5" />
                             <button type="button" class="vagas-button" onclick="incrementVagas()">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <input type="hidden" asp-for="Vagas_Disponiveis" id="vagasInput" value="0" />
-                        <input type="hidden" asp-for="Numero_Jogadores" id="numJogadoresInput" value="0" />
                         <span asp-validation-for="Vagas_Disponiveis" class="text-danger"></span>
                     </div>
-                </div>
-
-                <!-- Faixa Etária -->
-                <h3 class="section-title mt-5">Faixa Etária</h3>
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
-                            Em caso de temas sensíveis, você deve escolher a faixa etária
-                        </p>
-                        <div class="tags-container">
-                            <input type="radio" name="Faixa_Etaria" value="+12" id="faixa12" style="display: none;" />
-                            <label for="faixa12" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">+12</label>
-
-                            <input type="radio" name="Faixa_Etaria" value="+14" id="faixa14" style="display: none;" />
-                            <label for="faixa14" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">+14</label>
-
-                            <input type="radio" name="Faixa_Etaria" value="+16" id="faixa16" style="display: none;" />
-                            <label for="faixa16" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">+16</label>
-
-                            <input type="radio" name="Faixa_Etaria" value="+18" id="faixa18" style="display: none;" />
-                            <label for="faixa18" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">+18</label>
-
-                            <input type="radio" name="Faixa_Etaria" value="Livre" id="faixaLivre"
-                                style="display: none;" />
-                            <label for="faixaLivre" class="tag-button"
-                                onclick="this.previousElementSibling.checked = true">Livre</label>
-                        </div>
+                    <div class="col-md-6">
+                        <label asp-for="Faixa_Etaria" class="form-label">Faixa Etária</label>
+                        <select asp-for="Faixa_Etaria" class="form-select">
+                            <option value="">Selecione a faixa etária</option>
+                            <option value="Livre">Livre</option>
+                            <option value="10+">10+</option>
+                            <option value="12+">12+</option>
+                            <option value="14+">14+</option>
+                            <option value="16+">16+</option>
+                            <option value="18+">18+</option>
+                        </select>
                         <span asp-validation-for="Faixa_Etaria" class="text-danger"></span>
                     </div>
                 </div>
 
-                <!-- Hidden fields (ID_Mestre será definido no controller) -->
+                <!-- Premissa e Expectativas -->
+                <h3 class="section-title mt-5">Premissa e Expectativas</h3>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label asp-for="Premissa_Campanha" class="form-label">Premissa da Campanha</label>
+                        <textarea asp-for="Premissa_Campanha" class="form-control"
+                            placeholder="Descreva a premissa da sua aventura..."></textarea>
+                        <span asp-validation-for="Premissa_Campanha" class="text-danger"></span>
+                    </div>
+                </div>
 
-                <!-- Botões -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label asp-for="O_Que_Esperar" class="form-label">O que esperar dos jogadores?</label>
+                        <textarea asp-for="O_Que_Esperar" class="form-control"
+                            placeholder="Detalhe o que você espera dos jogadores..."></textarea>
+                        <span asp-validation-for="O_Que_Esperar" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- Requisitos e Plataformas -->
+                <h3 class="section-title mt-5">Requisitos e Plataformas</h3>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label asp-for="Requisitos" class="form-label">Requisitos para Jogar</label>
+                        <textarea asp-for="Requisitos" class="form-control"
+                            placeholder="Ex: Livros, dados, microfone..."></textarea>
+                        <span asp-validation-for="Requisitos" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Plataformas" class="form-label">Plataformas Utilizadas</label>
+                        <textarea asp-for="Plataformas" class="form-control"
+                            placeholder="Ex: Discord, Roll20, Foundry VTT..."></textarea>
+                        <span asp-validation-for="Plataformas" class="text-danger"></span>
+                    </div>
+                </div>
+
                 <div class="button-group">
-                    <button type="submit" class="btn-submit">
-                        <i class="fas fa-save"></i> Criar Mesa
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-plus-circle"></i> Criar Mesa
                     </button>
-                    <a href="@Url.Action("Mesas", "Home")" class="btn-cancel">
-                        <i class="fas fa-times"></i> Cancelar
+                    <a asp-action="Index" class="btn btn-cancel">
+                        <i class="fas fa-arrow-left"></i> Cancelar
                     </a>
                 </div>
             </form>
@@ -530,44 +438,33 @@
     }
 
     <script>
-        let vagasCount = 0;
-
-        function incrementVagas() {
-            vagasCount++;
-            updateVagasDisplay();
+        function updateVagasDisplay() {
+            const vagasInput = document.getElementById('vagasInput');
+            const jogadoresInput = document.getElementById('jogadoresInput');
+            const vagasDisplay = document.getElementById('vagasDisplay');
+            vagasDisplay.textContent = vagasInput.value;
+            jogadoresInput.value = vagasInput.value; // Manter os dois campos sincronizados
         }
 
-        function decrementVagas() {
-            if (vagasCount > 0) {
-                vagasCount--;
+        function incrementVagas() {
+            const vagasInput = document.getElementById('vagasInput');
+            let currentValue = parseInt(vagasInput.value);
+            if (currentValue < 10) {
+                vagasInput.value = currentValue + 1;
                 updateVagasDisplay();
             }
         }
 
-        function updateVagasDisplay() {
-            document.getElementById('vagasDisplay').textContent = vagasCount;
-            document.getElementById('vagasInput').value = vagasCount;
-            document.getElementById('numJogadoresInput').value = vagasCount;
+        function decrementVagas() {
+            const vagasInput = document.getElementById('vagasInput');
+            let currentValue = parseInt(vagasInput.value);
+            if (currentValue > 1) {
+                vagasInput.value = currentValue - 1;
+                updateVagasDisplay();
+            }
         }
 
-        // Adicionar classe active aos botões de tag quando clicados
-        document.addEventListener('DOMContentLoaded', function () {
-            const tagButtons = document.querySelectorAll('.tag-button');
-
-            tagButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active de todos os botões do mesmo grupo
-                    const radioInput = this.previousElementSibling;
-                    const radioName = radioInput.name;
-
-                    document.querySelectorAll(`input[name="${radioName}"]`).forEach(input => {
-                        input.nextElementSibling.classList.remove('active');
-                    });
-
-                    // Adiciona active ao botão clicado
-                    this.classList.add('active');
-                });
-            });
-        });
+        // Inicializa o display ao carregar a página
+        document.addEventListener('DOMContentLoaded', updateVagasDisplay);
     </script>
 }

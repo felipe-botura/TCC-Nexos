@@ -64,7 +64,7 @@
         <div class="filter-box" id="categoriaFilter" tabindex="0" aria-label="Filtro de categoria">
             <strong class="dropdown-toggle">Categoria <span class="filter-badge" id="categoriaBadge"
                     style="display:none;"></span></strong>
-            <span>One-shot, campanha longa, etc...</span>
+            <span>One-shot, Campanha longa  e  Mini-campanha</span>
             <div class="dropdown-menu" id="categoriaDropdown">
                 <div class="dropdown-item" data-value="">Todas as categorias</div>
                 <div class="dropdown-item" data-value="One-shot">One-shot</div>
@@ -153,6 +153,14 @@
                 }
             });
 
+            // Função auxiliar para verificar se há filtros ativos
+            function temFiltrosAtivos() {
+                return selectedFilters.generoId !== '' ||
+                    selectedFilters.sistemaId !== '' ||
+                    selectedFilters.modalidade !== '' ||
+                    selectedFilters.categoria !== '';
+            }
+
             // Gerenciamento dos itens do dropdown
             function setupDropdownItems(dropdownId, filterKey, badgeId) {
                 const items = document.querySelectorAll(`#${dropdownId} .dropdown-item`);
@@ -210,6 +218,12 @@
                     modalidade: selectedFilters.modalidade,
                     categoria: selectedFilters.categoria
                 });
+
+                // Mostra ou esconde o botão de limpar filtros baseado se há filtros ativos
+                const clearFiltersBtn = document.getElementById('clearFilters');
+                if (clearFiltersBtn) {
+                    clearFiltersBtn.style.display = temFiltrosAtivos() ? "block" : "none";
+                }
 
                 fetch(`/Home/CarregarMaisMesas?${params.toString()}`)
                     .then(resp => resp.text())
@@ -271,7 +285,10 @@
                         badge.style.display = 'none';
                     });
 
-                    // Aplica filtros vazios
+                    // Esconde o botão de limpar filtros
+                    this.style.display = "none";
+
+                    // Aplica filtros vazios (que agora não irá mostrar o botão novamente)
                     aplicarFiltros();
                 });
             }

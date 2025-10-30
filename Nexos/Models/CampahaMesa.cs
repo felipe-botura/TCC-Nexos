@@ -40,7 +40,7 @@ namespace Nexos.Models
         public string Faixa_Etaria { get; set; }
 
         // FK para Sistema e Genero (opcionais)
-        public int ID_Sistema { get; set; }
+        public int? ID_Sistema { get; set; } // Corrigido para int?
 
         [ForeignKey(nameof(ID_Sistema))]
         public Sistema Sistema { get; set; }
