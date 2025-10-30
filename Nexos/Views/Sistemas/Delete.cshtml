@@ -5,29 +5,147 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container pt-50 pb-50">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-            <h1 class="section-title mb-40">Excluir Sistema</h1>
-            <div class="card bg-dark text-white p-4">
-                <h3 class="mb-3">Tem certeza de que deseja excluir este sistema?</h3>
-                <hr />
-                <dl class="row mb-4">
-                    <dt class="col-sm-3">
-                        @Html.DisplayNameFor(model => model.Nome_Sistema)
-                    </dt>
-                    <dd class="col-sm-9">
-                        @Html.DisplayFor(model => model.Nome_Sistema)
-                    </dd>
-                </dl>
-                
-                <form asp-action="Delete">
-                    <input type="hidden" asp-for="ID_Sistema" />
-                    <input type="submit" value="Excluir" class="btn btn-danger" /> |
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
-                </form>
+<style>
+    .admin-container {
+        background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+        min-height: 100vh;
+        padding: 60px 0;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 50px;
+        color: white;
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .page-header p {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .details-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .details-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .details-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .details-label {
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .details-value {
+        color: white;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .btn-delete-custom {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+    }
+
+    .btn-delete-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(239, 68, 68, 0.6);
+        color: white;
+    }
+
+    .btn-secondary-custom {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-secondary-custom:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .warning-text {
+        color: #fca311;
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+</style>
+
+<div class="admin-container">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-trash"></i> Excluir Sistema</h1>
+            <p>Confirme a exclusão do sistema selecionado</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="details-card">
+                    <p class="warning-text">
+                        Tem certeza de que deseja excluir este Sistema? Esta ação não pode ser desfeita.
+                    </p>
+                    <div class="details-item">
+                        <div class="details-label">
+                            @Html.DisplayNameFor(model => model.Nome_Sistema)
+                        </div>
+                        <div class="details-value">
+                            @Html.DisplayFor(model => model.Nome_Sistema)
+                        </div>
+                    </div>
+                    
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="ID_Sistema" />
+                        <div class="card-actions justify-content-center">
+                            <button type="submit" class="btn btn-delete-custom">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary-custom">
+                                <i class="fas fa-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-

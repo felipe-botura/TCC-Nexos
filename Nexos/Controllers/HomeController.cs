@@ -57,7 +57,7 @@ public class HomeController : Controller
     }
 
     [HttpGet("Home/Mesas")]
-    public IActionResult Mesas(int? generoId, int? sistemaId, string modalidade, string categoria, int page = 1, int pageSize = 9)
+    public IActionResult Mesas(int? generoId, int? sistemaId, string modalidade, string categoria, string searchTerm, int page = 1, int pageSize = 9)
     {
         ViewData["Title"] = "Mesas Disponíveis";
         ViewBag.Generos = _context.Generos.ToList();
@@ -68,6 +68,20 @@ public class HomeController : Controller
             .Include(c => c.Sistema)
             .Include(c => c.Mestre)
             .AsQueryable();
+
+        // Filtro de pesquisa por termo
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            searchTerm = searchTerm.ToLower();
+            query = query.Where(m =>
+                m.Titulo_Campanha.ToLower().Contains(searchTerm) ||
+                m.Premissa_Campanha.ToLower().Contains(searchTerm) ||
+                m.Mestre.Nome.ToLower().Contains(searchTerm) ||
+                m.Sistema.Nome_Sistema.ToLower().Contains(searchTerm) ||
+                m.Genero.Nome_Genero.ToLower().Contains(searchTerm)
+            );
+            ViewBag.SearchTerm = searchTerm;
+        }
 
         if (generoId.HasValue && generoId.Value > 0)
             query = query.Where(m => m.ID_Genero == generoId.Value);
@@ -127,7 +141,7 @@ public class HomeController : Controller
 
 
     // Método para busca AJAX (opcional)
-    [HttpGet]
+    [HttpGet("Home/FiltrarMesas")] // CORREÇÃO: Rota explícita para evitar AmbiguousMatchException com Mesas()
     public IActionResult FiltrarMesas(int? generoId, int? sistemaId, string modalidade, string categoria)
     {
         var query = _context.CampanhasMesas
@@ -195,7 +209,7 @@ public class HomeController : Controller
     {
         ModelState.Remove("ID_Mestre");
         ModelState.Remove("Mestre");
-        
+
         if (ModelState.IsValid)
         {
             // Obter o usuário atual e definir como mestre

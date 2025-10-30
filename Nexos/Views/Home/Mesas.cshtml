@@ -17,6 +17,24 @@
         </a>
     </section>
 
+    @if (!string.IsNullOrEmpty(ViewBag.SearchTerm))
+    {
+        <section class="search-results-info"
+            style="background: rgba(168, 85, 247, 0.1); padding: 20px 0; text-align: center;">
+            <div class="container">
+                 <p style="color: white; margin: 0; white-space: nowrap;">
+                    <i class="fas fa-search"></i>
+                    Resultados para: <strong>"@ViewBag.SearchTerm"</strong>
+                    <a href="@Url.Action("Mesas", "Home")"
+                       style="margin-left: 15px; color: #a855f7; text-decoration: none; font-weight: 600; white-space: nowrap;">
+                        
+                        <i class="fas fa-times"></i>Limpar pesquisa
+                    </a>
+                </p>
+            </div>
+        </section>
+    }
+
     <!-- Filtros -->
     <section class="filters" aria-label="Filtros para pesquisa de campanhas">
         <!-- Filtro de Gênero -->
@@ -64,7 +82,7 @@
         <div class="filter-box" id="categoriaFilter" tabindex="0" aria-label="Filtro de categoria">
             <strong class="dropdown-toggle">Categoria <span class="filter-badge" id="categoriaBadge"
                     style="display:none;"></span></strong>
-            <span>One-shot, Campanha longa  e  Mini-campanha</span>
+            <span>One-shot, Campanha longa e Mini-campanha</span>
             <div class="dropdown-menu" id="categoriaDropdown">
                 <div class="dropdown-item" data-value="">Todas as categorias</div>
                 <div class="dropdown-item" data-value="One-shot">One-shot</div>

@@ -5,24 +5,128 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container pt-50 pb-50">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-            <h1 class="section-title mb-40">Editar Gênero</h1>
-            <div class="card bg-dark text-white p-4">
-                <form asp-action="Edit">
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-                    <input type="hidden" asp-for="ID_Genero" />
-                    <div class="form-group mb-3">
-                        <label asp-for="Nome_Genero" class="control-label"></label>
-                        <input asp-for="Nome_Genero" class="form-control bg-secondary text-white border-0" />
-                        <span asp-validation-for="Nome_Genero" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Salvar" class="btn hero-btn" />
-                        <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
-                    </div>
-                </form>
+<style>
+    .admin-container {
+        background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+        min-height: 100vh;
+        padding: 60px 0;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 50px;
+        color: white;
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .page-header p {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .control-label {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 12px;
+        border-radius: 10px;
+        transition: border-color 0.3s ease;
+        font-size: 1.5rem;
+    }
+
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-color: #a855f7;
+        box-shadow: 0 0 0 0.25rem rgba(168, 85, 247, 0.25);
+        color: white;
+    }
+
+    .btn-primary-custom {
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+    }
+
+    .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(168, 85, 247, 0.6);
+        color: white;
+    }
+
+    .btn-secondary-custom {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-secondary-custom:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .text-danger {
+        color: #ef4444 !important;
+    }
+</style>
+
+<div class="admin-container">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-edit"></i> Editar Gênero</h1>
+            <p>Altere os dados do gênero de RPG</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="form-card">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+                        <input type="hidden" asp-for="ID_Genero" />
+                        <div class="form-group mb-4">
+                            <label asp-for="Nome_Genero" class="control-label">Nome do Gênero</label>
+                            <input asp-for="Nome_Genero" class="form-control" />
+                            <span asp-validation-for="Nome_Genero" class="text-danger"></span>
+                        </div>
+                        <div class="form-group d-flex justify-content-between mt-4">
+                            <input type="submit" value="Salvar" class="btn btn-primary-custom" />
+                            <a asp-action="Index" class="btn btn-secondary-custom">
+                                <i class="fas fa-arrow-left"></i> Voltar para a Lista
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -31,4 +135,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-

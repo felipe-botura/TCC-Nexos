@@ -44,11 +44,14 @@
                 <h2>PROCURE O QUE VOCÊ TEM INTERESSE</h2>
             </div>
             <div class="col-xl-8 col-lg-7">
-                <form action="#" class="search-box">
+                <form id="searchForm" asp-action="Mesas" asp-controller="Home" method="get" class="search-box">
                     <div class="input-form">
-                        <input type="text" placeholder="Pesquisar (Campanhas, sistemas, mestres, jogadores etc...)" />
+                        <input type="text" 
+                               name="searchTerm" 
+                               id="searchInput"
+                               placeholder="Pesquisar (Campanhas, sistemas, mestres, jogadores etc...)" />
                         <div class="search-form">
-                            <button><i class="ti-search"></i></button>
+                            <button type="submit"><i class="ti-search"></i></button>
                         </div>
                         <div class="world-form">
                             <img id="logo-pesquisa" src="@(Url.Content("~/img/logo/loderDark.png"))" alt="" />
@@ -204,3 +207,32 @@
     </div>
 </section>
 <!-- Testemunhos dos Players End -->
+@section Scripts {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        
+        if (searchForm && searchInput) {
+            searchForm.addEventListener('submit', function(e) {
+                const searchValue = searchInput.value.trim();
+                
+                if (searchValue === '') {
+                    e.preventDefault();
+                    // Redireciona para a página de mesas sem parâmetro de pesquisa
+                    window.location.href = '@Url.Action("Mesas", "Home")';
+                    return false;
+                }
+            });
+            
+            // Permite pesquisar pressionando Enter
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    searchForm.submit();
+                }
+            });
+        }
+    });
+</script>
+}

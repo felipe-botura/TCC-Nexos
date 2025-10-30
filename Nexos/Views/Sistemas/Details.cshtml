@@ -5,25 +5,137 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container pt-50 pb-50">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-            <h1 class="section-title mb-40">Detalhes do Sistema</h1>
-            <div class="card bg-dark text-white p-4">
-                <dl class="row mb-4">
-                    <dt class="col-sm-3">
-                        @Html.DisplayNameFor(model => model.Nome_Sistema)
-                    </dd>
-                    <dd class="col-sm-9">
-                        @Html.DisplayFor(model => model.Nome_Sistema)
-                    </dd>
-                </dl>
-                <div>
-                    <a asp-action="Edit" asp-route-id="@Model.ID_Sistema" class="btn hero-btn">Editar</a>
-                    <a asp-action="Index" class="btn btn-secondary ml-2">Voltar para a Lista</a>
+<style>
+    .admin-container {
+        background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+        min-height: 100vh;
+        padding: 60px 0;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 50px;
+        color: white;
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .page-header p {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .details-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .details-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .details-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .details-label {
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+    }
+
+    .details-value {
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-top: 5px;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .btn-edit-custom {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        text-decoration: none;
+    }
+
+    .btn-edit-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.6);
+        color: white;
+    }
+
+    .btn-secondary-custom {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-secondary-custom:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+</style>
+
+<div class="admin-container">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-eye"></i> Detalhes do Sistema</h1>
+            <p>Informações detalhadas sobre o sistema selecionado</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="details-card">
+                    <div class="details-item">
+                        <div class="details-label">
+                            @Html.DisplayNameFor(model => model.Nome_Sistema)
+                        </div>
+                        <div class="details-value">
+                            @Html.DisplayFor(model => model.Nome_Sistema)
+                        </div>
+                    </div>
+                    
+                    <div class="card-actions">
+                        <a asp-action="Edit" asp-route-id="@Model?.ID_Sistema" class="btn-edit-custom">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a asp-action="Index" class="btn-secondary-custom">
+                            <i class="fas fa-arrow-left"></i> Voltar para a Lista
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
