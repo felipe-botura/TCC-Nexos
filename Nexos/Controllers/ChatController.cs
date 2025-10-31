@@ -40,6 +40,9 @@ namespace Nexos.Controllers
             // Por enquanto, vamos considerar que qualquer usuário logado que não seja o mestre é um "jogador"
             // que tem acesso ao chat (o que pode ser ajustado depois).
             var isJogador = !isMestre && userId != null;
+            
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            var currentUserName = currentUser?.Nome ?? "Usuário Desconhecido";
 
             if (!isMestre && !isJogador)
             {
@@ -52,6 +55,7 @@ namespace Nexos.Controllers
                 Campanha = campanha,
                 IsMestre = isMestre,
                 UserId = userId,
+                UserName = currentUserName,
                 // Carregar as 50 últimas mensagens
                 Mensagens = await _context.ChatsCampanha
                     .Where(c => c.IdCampanha == id)

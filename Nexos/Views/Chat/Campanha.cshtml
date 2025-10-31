@@ -55,7 +55,7 @@
         const campanhaId = @Model.Campanha.ID_Campanha;
         const userId = "@Model.UserId";
         const tipoUsuario = @(Model.IsMestre ? 1 : 0);
-        const userName = "@Model.User.Nome"; // Assumindo que o Model.User está populado no Controller
+        const userName = "@Model.UserName";
 
         // 1. Receber Mensagem
         connection.on("ReceiveMessage", function (user, message, time, tipo) {
