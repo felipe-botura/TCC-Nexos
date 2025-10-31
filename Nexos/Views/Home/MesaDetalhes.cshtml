@@ -150,9 +150,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
-                <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
-                    Mandar Solicitação
-                </button>
+<a asp-controller="Chat" asp-action="Campanha" asp-route-id="@Model.ID_Campanha" class="btn btn-success btn-lg px-5 py-3 rounded-pill">
+	                    Acessar Chat
+	                </a>
+	                <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+	                    Mandar Solicitação
+	                </button>
             </div>
         </div>
     </div>

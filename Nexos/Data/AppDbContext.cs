@@ -19,6 +19,7 @@ namespace Nexos.Data
         public DbSet<Postagem> Postagens { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Reacao> Reacoes { get; set; }
+        public DbSet<ChatCampanha> ChatsCampanha { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

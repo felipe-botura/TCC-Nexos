@@ -1,0 +1,120 @@
+@model Nexos.Controllers.ChatCampanhaViewModel
+@{
+    ViewData["Title"] = $"Chat da Campanha: {Model.Campanha.Titulo_Campanha}";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Chat da Campanha: @Model.Campanha.Titulo_Campanha</h2>
+            <p class="text-center">Você é: @(Model.IsMestre ? "Mestre" : "Jogador")</p>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="chat-container" style="height: 500px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">
+                @foreach (var mensagem in Model.Mensagens)
+                {
+                    var isMine = mensagem.UserId == Model.UserId;
+                    var alignClass = isMine ? "text-right" : "text-left";
+                    var bubbleClass = isMine ? "bg-primary text-white" : "bg-light";
+                    var role = mensagem.TipoUsuario == 1 ? "Mestre" : "Jogador";
+
+                    <div class="message-bubble @alignClass mb-2">
+                        <small class="text-muted">@role - @mensagem.User.Nome (@mensagem.DataHora.ToString("HH:mm:ss"))</small>
+                        <div class="p-2 rounded @bubbleClass d-inline-block">
+                            @mensagem.Texto
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" id="messageInput" class="form-control" placeholder="Digite sua mensagem..." />
+                <div class="input-group-append">
+                    <button class="btn btn-success" id="sendButton" type="button">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .build();
+
+        const campanhaId = @Model.Campanha.ID_Campanha;
+        const userId = "@Model.UserId";
+        const tipoUsuario = @(Model.IsMestre ? 1 : 0);
+        const userName = "@Model.User.Nome"; // Assumindo que o Model.User está populado no Controller
+
+        // 1. Receber Mensagem
+        connection.on("ReceiveMessage", function (user, message, time, tipo) {
+            const isMine = user === userId;
+            const alignClass = isMine ? "text-right" : "text-left";
+            const bubbleClass = isMine ? "bg-primary text-white" : "bg-light";
+            const role = tipo === 1 ? "Mestre" : "Jogador";
+            const senderName = isMine ? userName : user; // Simplificação, o ideal é buscar o nome do usuário
+
+            const messageHtml = `
+                <div class="message-bubble ${alignClass} mb-2">
+                    <small class="text-muted">${role} - ${senderName} (${time})</small>
+                    <div class="p-2 rounded ${bubbleClass} d-inline-block">
+                        ${message}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById("chat-container").innerHTML += messageHtml;
+            document.getElementById("chat-container").scrollTop = document.getElementById("chat-container").scrollHeight;
+        });
+
+        // 2. Iniciar Conexão
+        connection.start().then(function () {
+            console.log("SignalR Connected.");
+            // Entrar no grupo da campanha
+            connection.invoke("JoinCampanha", campanhaId).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            document.getElementById("sendButton").disabled = false;
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        // 3. Enviar Mensagem
+        document.getElementById("sendButton").addEventListener("click", function (event) {
+            const message = document.getElementById("messageInput").value;
+            if (message) {
+                connection.invoke("SendMessage", campanhaId, userId, message, tipoUsuario).catch(function (err) {
+                    return console.error(err.toString());
+                });
+                document.getElementById("messageInput").value = "";
+            }
+            event.preventDefault();
+        });
+
+        // Enviar mensagem ao pressionar Enter
+        document.getElementById("messageInput").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                document.getElementById("sendButton").click();
+            }
+        });
+
+        // Scroll para o final ao carregar
+        document.addEventListener("DOMContentLoaded", function() {
+            const chatContainer = document.getElementById("chat-container");
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+
+    </script>
+}
