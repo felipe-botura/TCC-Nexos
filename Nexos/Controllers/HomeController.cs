@@ -56,6 +56,12 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Sistemas()
+{
+    var sistemas = _context.Sistemas.ToList();
+    return View(sistemas);
+}
+
     [HttpGet("Home/Mesas")]
     public IActionResult Mesas(int? generoId, int? sistemaId, string modalidade, string categoria, string searchTerm, int page = 1, int pageSize = 9)
     {

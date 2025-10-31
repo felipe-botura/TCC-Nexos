@@ -237,7 +237,6 @@ html {
 /* Search and account icons */
 .fas.fa-search,
 .fas.fa-user-circle {
-    font-size: 1.1rem;
     color: #e0e0e0;
     transition: color 0.3s ease;
     cursor: pointer;
