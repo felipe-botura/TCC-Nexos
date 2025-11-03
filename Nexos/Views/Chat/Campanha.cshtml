@@ -1,49 +1,49 @@
-@model Nexos.Controllers.ChatCampanhaViewModel
+@model Nexos.ViewModels.ChatCampanhaViewModel
 @{
     ViewData["Title"] = $"Chat da Campanha: {Model.Campanha.Titulo_Campanha}";
 }
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="text-center">Chat da Campanha: @Model.Campanha.Titulo_Campanha</h2>
-            <p class="text-center">Você é: @(Model.IsMestre ? "Mestre" : "Jogador")</p>
-            <hr />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div id="chat-container" style="height: 500px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">
-                @foreach (var mensagem in Model.Mensagens)
-                {
-                    var isMine = mensagem.UserId == Model.UserId;
-                    var alignClass = isMine ? "text-right" : "text-left";
-                    var bubbleClass = isMine ? "bg-primary text-white" : "bg-light";
-                    var role = mensagem.TipoUsuario == 1 ? "Mestre" : "Jogador";
-
-                    <div class="message-bubble @alignClass mb-2">
-                        <small class="text-muted">@role - @mensagem.User.Nome (@mensagem.DataHora.ToString("HH:mm:ss"))</small>
-                        <div class="p-2 rounded @bubbleClass d-inline-block">
-                            @mensagem.Texto
-                        </div>
-                    </div>
-                }
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center white-color">Chat da Campanha: @Model.Campanha.Titulo_Campanha</h2>
+                <p class="text-center white-color">Você é: @(Model.IsMestre ? "Mestre" : "Jogador")</p>
+                <hr style="border-color: #f067ff;" />
             </div>
         </div>
-    </div>
 
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <div class="input-group">
-                <input type="text" id="messageInput" class="form-control" placeholder="Digite sua mensagem..." />
-                <div class="input-group-append">
-                    <button class="btn btn-success" id="sendButton" type="button">Enviar</button>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="chat-container" class="card" style="height: 500px; overflow-y: scroll; padding: 10px; background-color: #2D0A31; border: 1px solid #f067ff;">
+                    @foreach (var mensagem in Model.Mensagens)
+                    {
+                        var isMine = mensagem.UserId == Model.UserId;
+                        var alignClass = isMine ? "text-end" : "text-start"; // Usando text-end para Bootstrap 5
+                        var bubbleClass = isMine ? "theme-bg text-white" : "white-bg black-color";
+                        var role = mensagem.TipoUsuario == 1 ? "Mestre" : "Jogador";
+
+                        <div class="message-bubble @alignClass mb-2">
+                            <small class="text-muted" style="color: #ccc !important;">@role - @mensagem.User.Nome (@mensagem.DataHora.ToString("HH:mm"))</small>
+                            <div class="p-2 rounded @bubbleClass d-inline-block" style="max-width: 70%;">
+                                @mensagem.Texto
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" id="messageInput" class="form-control" placeholder="Digite sua mensagem..." style="background-color: #16161a; color: #fff; border-color: #f067ff;" />
+                    <button class="btn boxed-btn" id="sendButton" type="button">Enviar</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 @section Scripts {
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
@@ -55,20 +55,19 @@
         const campanhaId = @Model.Campanha.ID_Campanha;
         const userId = "@Model.UserId";
         const tipoUsuario = @(Model.IsMestre ? 1 : 0);
-        const userName = "@Model.UserName";
 
         // 1. Receber Mensagem
-        connection.on("ReceiveMessage", function (user, message, time, tipo) {
+        connection.on("ReceiveMessage", function (user, message, time, tipo, userName) {
             const isMine = user === userId;
-            const alignClass = isMine ? "text-right" : "text-left";
-            const bubbleClass = isMine ? "bg-primary text-white" : "bg-light";
+            const alignClass = isMine ? "text-end" : "text-start";
+            const bubbleClass = isMine ? "theme-bg text-white" : "white-bg black-color";
             const role = tipo === 1 ? "Mestre" : "Jogador";
-            const senderName = isMine ? userName : user; // Simplificação, o ideal é buscar o nome do usuário
+            const senderName = userName;
 
             const messageHtml = `
                 <div class="message-bubble ${alignClass} mb-2">
-                    <small class="text-muted">${role} - ${senderName} (${time})</small>
-                    <div class="p-2 rounded ${bubbleClass} d-inline-block">
+                    <small class="text-muted" style="color: #ccc !important;">${role} - ${senderName} (${time})</small>
+                    <div class="p-2 rounded ${bubbleClass} d-inline-block" style="max-width: 70%;">
                         ${message}
                     </div>
                 </div>

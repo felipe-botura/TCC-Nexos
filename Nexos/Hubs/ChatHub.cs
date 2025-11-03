@@ -32,7 +32,10 @@ namespace Nexos.Hubs
 
             // 2. Enviar a mensagem para todos os clientes conectados ao grupo da campanha
             // O nome do grupo será "Campanha_{campanhaId}"
-            await Clients.Group($"Campanha_{campanhaId}").SendAsync("ReceiveMessage", userId, message, chatMessage.DataHora.ToString("HH:mm:ss"), tipoUsuario);
+            var user = await _context.Users.FindAsync(userId);
+            var userName = user?.Nome ?? "Desconhecido";
+
+            await Clients.Group($"Campanha_{campanhaId}").SendAsync("ReceiveMessage", userId, message, chatMessage.DataHora.ToString("HH:mm"), tipoUsuario, userName);
         }
 
         public async Task JoinCampanha(int campanhaId)
