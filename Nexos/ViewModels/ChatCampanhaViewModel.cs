@@ -1,7 +1,7 @@
 using Nexos.Models;
 using System.Collections.Generic;
 
-namespace Nexos.Controllers
+namespace Nexos.ViewModels
 {
     public class ChatCampanhaViewModel
     {
