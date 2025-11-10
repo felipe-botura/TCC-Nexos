@@ -44,9 +44,15 @@ namespace Nexos.Controllers
             var currentUser = await _userManager.FindByIdAsync(userId);
             var currentUserName = currentUser?.Nome ?? "Usuário Desconhecido";
 
+            if (userId == null)
+            {
+                // Usuário não logado, redirecionar para login
+                return Challenge();
+            }
+
             if (!isMestre && !isJogador)
             {
-                // Usuário não logado ou sem permissão
+                // Usuário logado, mas sem permissão para esta campanha
                 return Forbid();
             }
 
