@@ -44,17 +44,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHub<Nexos.Hubs.ChatHub>("/chatHub");
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});
-
 app.UseAuthorization();
 
+app.MapHub<Nexos.Hubs.ChatHub>("/chatHub");
+
 app.MapStaticAssets();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // app.MapControllerRoute(
 //     name: "default",
