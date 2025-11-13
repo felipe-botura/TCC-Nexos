@@ -48,3 +48,13 @@
     line-height: 1.5 !important;
     height: 100%;
 }
+.form-control{
+    font-size: 1.7rem;
+}
+.boxed-btn{
+    color: #fff !important;
+}
+
+#messageInput{
+    height: max-content;
+}
