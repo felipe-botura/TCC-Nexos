@@ -35,7 +35,7 @@ namespace Nexos.Hubs
             var user = await _context.Users.FindAsync(userId);
             var userName = user?.Nome ?? "Desconhecido";
 
-            await Clients.Group($"Campanha_{campanhaId}").SendAsync("ReceiveMessage", userId, message, chatMessage.DataHora.ToString("HH:mm"), tipoUsuario, userName);
+            await Clients.Group($"Campanha_{campanhaId}").SendAsync("ReceiveMessage", userId, message, chatMessage.DataHora.ToString("dd/MM HH:mm"), tipoUsuario, userName);
         }
 
         public async Task JoinCampanha(int campanhaId)

@@ -24,7 +24,7 @@
                         var role = mensagem.TipoUsuario == 1 ? "Mestre" : "Jogador";
 
                         <div class="message-bubble @alignClass mb-2">
-                            <small class="text-muted" style="color: #ccc !important;">@role - @mensagem.User.Nome (@mensagem.DataHora.ToString("HH:mm"))</small>
+                            <small class="text-muted" style="color: #ccc !important;">@role - @mensagem.User.Nome (@mensagem.DataHora.ToString("dd/MM HH:mm"))</small>
                             <div class="p-2 rounded @bubbleClass d-inline-block" style="max-width: 70%;">
                                 @mensagem.Texto
                             </div>
