@@ -37,6 +37,7 @@ namespace Nexos.Data
                     EmailConfirmed = true,
                     Nome = "Felipe Bissolli Botura",
                     DataNascimento = new DateTime(1990, 5, 15),
+                    Foto = "/img/usuarios/felipe.png",
                 },
                 new Usuario(){
                     Id = "a1b2c3d4-e5f6-7890-1234-567890abcdef",
