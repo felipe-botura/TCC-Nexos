@@ -111,7 +111,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 1,
                     Titulo_Campanha = "A Ascensão de Tiamat",
-                    Premissa_Campanha = "Cultistas trabalham para libertar Tiamat, a deusa dragão, e os heróis precisam impedir.",
+                    Premissa_Campanha = "O Culto do Dragão está se movendo nas sombras, reunindo artefatos lendários para invocar Tiamat, a Deusa Dragão de cinco cabeças, de volta ao mundo. Vocês são a única esperança de impedir que o caos e a tirania se espalhem por Faerûn. A jornada será longa e perigosa, levando-os de cidades sitiadas a covis de dragões ancestrais, onde cada decisão pode selar o destino do mundo.",
                     O_Que_Esperar = "Aventura épica e combates intensos.",
                     Imagem_Capa = "/img/campaigns/placeholder1.png",
                     Status_Campanha = "Ativa",
@@ -131,7 +131,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 2,
                     Titulo_Campanha = "O Mistério da Mansão Blackwood",
-                    Premissa_Campanha = "Uma investigação macabra em uma mansão amaldiçoada.",
+                    Premissa_Campanha = "A Mansão Blackwood tem sido palco de eventos inexplicáveis e desaparecimentos há décadas. Como investigadores do paranormal, vocês são chamados para desvendar o mistério por trás de sua reputação macabra. Preparem-se para enfrentar não apenas fantasmas e maldições, mas também os segredos sombrios de uma família que se recusou a morrer, mergulhando em um terror psicológico onde a sanidade é o preço da verdade.",
                     O_Que_Esperar = "Terror psicológico e suspense.",
                     Imagem_Capa = "/img/campaigns/placeholder2.png",
                     Status_Campanha = "Em breve",
@@ -151,7 +151,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 3,
                     Titulo_Campanha = "Sombras de Cybercity",
-                    Premissa_Campanha = "Mercenários enfrentam megacorporações e conspirações em um futuro sombrio.",
+                    Premissa_Campanha = "Em Cybercity, a luz neon esconde a podridão das megacorporações que controlam cada aspecto da vida. Vocês são um grupo de *mercenários* (ou *edgerunners*) contratados para realizar trabalhos sujos e perigosos. Sua missão atual: roubar dados cruciais de uma das maiores corporações, mas o que começa como um simples roubo se transforma em uma conspiração que ameaça expor a verdade por trás do poder da cidade.",
                     O_Que_Esperar = "Ação e intriga em um cenário cyberpunk.",
                     Imagem_Capa = "/img/campaigns/placeholder3.png",
                     Status_Campanha = "Ativa",
@@ -171,7 +171,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 4,
                     Titulo_Campanha = "Reinos Perdidos de Aranthor",
-                    Premissa_Campanha = "Exploradores descobrem ruínas de uma civilização mágica esquecida.",
+                    Premissa_Campanha = "Aranthor, um reino há muito perdido, ressurge das brumas do tempo. Vocês são exploradores destemidos que se aventuram nas ruínas de uma civilização mágica esquecida, repleta de armadilhas antigas, tesouros incalculáveis e, mais importante, segredos que podem reescrever a história. O que vocês farão com o poder que encontrarem nas profundezas de Aranthor?",
                     O_Que_Esperar = "Exploração e fantasia clássica.",
                     Imagem_Capa = "/img/campaigns/placeholder4.png",
                     Status_Campanha = "Ativa",
@@ -191,7 +191,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 5,
                     Titulo_Campanha = "Sangue e Trevas",
-                    Premissa_Campanha = "Clãs de vampiros disputam poder nas sombras da cidade.",
+                    Premissa_Campanha = "A noite pertence aos Membros, e a cidade é o tabuleiro de xadrez onde clãs de vampiros disputam poder e influência. Vocês são recém-criados ou veteranos da Camarilla, tentando sobreviver à política traiçoeira, à fome insaciável e à ameaça constante da Inquisição. A premissa é simples: mantenham a Máscara, sobrevivam à noite e tentem não se tornar peões na Guerra da Gehenna.",
                     O_Que_Esperar = "Intriga política e drama sombrio.",
                     Imagem_Capa = "/img/campaigns/placeholder5.png",
                     Status_Campanha = "Ativa",
@@ -211,7 +211,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 6,
                     Titulo_Campanha = "Guerra das Relíquias",
-                    Premissa_Campanha = "Nações competem por artefatos lendários que podem mudar o destino do mundo.",
+                    Premissa_Campanha = "O mundo está à beira de uma nova era de conflito. Relíquias de poder inimaginável foram descobertas, e as grandes nações competem para controlá-las. Vocês são um grupo de aventureiros contratados por uma organização secreta para recuperar esses artefatos antes que caiam em mãos erradas. A cada relíquia encontrada, o destino do mundo se torna mais incerto, exigindo grandes batalhas e decisões políticas difíceis.",
                     O_Que_Esperar = "Grandes batalhas e decisões políticas.",
                     Imagem_Capa = "/img/campaigns/placeholder6.png",
                     Status_Campanha = "Em breve",
@@ -231,7 +231,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 7,
                     Titulo_Campanha = "A Comédia dos Heróis",
-                    Premissa_Campanha = "Um grupo desastrado tenta salvar o reino, causando mais problemas que soluções.",
+                    Premissa_Campanha = "O reino de Eldoria está em perigo, mas o grupo de heróis convocado para salvá-lo é, digamos, peculiar. Vocês são um bando de desajustados com boas intenções, mas péssima coordenação. A missão é salvar a princesa, mas o caminho é pavimentado com erros hilários, mal-entendidos e a constante ameaça de causar mais dano do que o próprio vilão. Preparem-se para muito humor e situações inusitadas.",
                     O_Que_Esperar = "Muito humor e situações inusitadas.",
                     Imagem_Capa = "/img/campaigns/placeholder7.png",
                     Status_Campanha = "Ativa",
@@ -251,7 +251,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 8,
                     Titulo_Campanha = "O Segredo do Tempo",
-                    Premissa_Campanha = "Aventura investigativa em um mundo onde o tempo está se rompendo.",
+                    Premissa_Campanha = "O tecido do tempo está se desfazendo, e eventos do passado e do futuro se misturam no presente. Vocês são investigadores especializados em anomalias temporais, chamados para descobrir a causa desse colapso. A aventura os levará a desvendar mistérios e quebra-cabeças temporais, onde cada pista pode estar em uma época diferente, e a falha significa a aniquilação da própria realidade.",
                     O_Que_Esperar = "Mistérios e quebra-cabeças temporais.",
                     Imagem_Capa = "/img/campaigns/placeholder8.png",
                     Status_Campanha = "Ativa",
@@ -271,7 +271,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
                     ID_Campanha = 9,
                     Titulo_Campanha = "Crônicas de Steamport",
-                    Premissa_Campanha = "Heróis em uma cidade steampunk enfrentam conspirações industriais.",
+                    Premissa_Campanha = "Bem-vindos a Steamport, a joia da coroa da era do vapor. Sob a fumaça das chaminés e o brilho do latão, heróis e inventores lutam contra conspirações industriais e a corrupção da elite. Vocês são a linha de frente contra aqueles que usam a tecnologia para oprimir. Preparem-se para uma aventura de ação, tecnologia e política, onde a engrenagem mais importante é a sua coragem.",
                     O_Que_Esperar = "Aventura, tecnologia e política.",
                     Imagem_Capa = "/img/campaigns/placeholder9.png",
                     Status_Campanha = "Em breve",
@@ -291,7 +291,7 @@ namespace Nexos.Data
                 new CampanhaMesa {
             ID_Campanha = 10,
             Titulo_Campanha = "Ecos do Abismo",
-            Premissa_Campanha = "Um culto esquecido ameaça romper o selo de uma entidade antiga nas profundezas.",
+            Premissa_Campanha = "Nas profundezas do oceano, um culto esquecido está prestes a romper o selo que aprisiona uma entidade cósmica ancestral. Vocês são investigadores de eventos sobrenaturais, e a missão é clara: impedir o ritual antes que o horror indescritível seja liberado. Esta é uma aventura de terror cósmico e investigação intensa, onde a sanidade é um luxo que vocês não podem pagar.",
             O_Que_Esperar = "Terror cósmico e investigação intensa.",
             Imagem_Capa = "/img/campaigns/placeholder10.png",
             Status_Campanha = "Ativa",
@@ -311,7 +311,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 11,
             Titulo_Campanha = "Tempestade Carmesim",
-            Premissa_Campanha = "Uma frota pirata misteriosa ameaça os mares do reino.",
+            Premissa_Campanha = "Os mares do reino estão sob ataque de uma frota pirata misteriosa, conhecida apenas como Tempestade Carmesim. Vocês são marinheiros experientes e aventureiros contratados para descobrir a origem desses ataques e detê-los. Preparem-se para batalhas navais épicas, exploração de ilhas desconhecidas e a busca por um tesouro que pode ser a chave para a paz ou a ruína do reino.",
             O_Que_Esperar = "Batalhas navais e aventuras marítimas.",
             Imagem_Capa = "/img/campaigns/placeholder11.png",
             Status_Campanha = "Em breve",
@@ -331,7 +331,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 12,
             Titulo_Campanha = "Neon & Caos",
-            Premissa_Campanha = "Hackers e rebeldes enfrentam corporações em uma metrópole iluminada por neon.",
+            Premissa_Campanha = "Em Neo-Kyoto, a metrópole iluminada por neon, a linha entre o legal e o ilegal é tênue. Vocês são hackers e rebeldes que vivem à margem, lutando contra o domínio das megacorporações. Sua vida é uma série de missões arriscadas e conspirações tecnológicas, onde a única regra é não ser pego. A sobrevivência depende da sua habilidade de navegar no caos digital e nas ruas escuras da cidade.",
             O_Que_Esperar = "Missões arriscadas e conspirações tecnológicas.",
             Imagem_Capa = "/img/campaigns/placeholder12.png",
             Status_Campanha = "Ativa",
@@ -351,7 +351,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 13,
             Titulo_Campanha = "O Reino dos Sonhos",
-            Premissa_Campanha = "Heróis são transportados para um mundo onde sonhos moldam a realidade.",
+            Premissa_Campanha = "Acordar em um mundo onde seus sonhos (e pesadelos) se manifestam é a nova realidade de vocês. Transportados para o Reino dos Sonhos, vocês devem aprender a controlar a própria imaginação para sobreviver. Esta é uma aventura de exploração surreal e desafios criativos, onde a realidade é fluida e a única limitação é a sua mente.",
             O_Que_Esperar = "Exploração surreal e desafios criativos.",
             Imagem_Capa = "/img/campaigns/placeholder13.png",
             Status_Campanha = "Ativa",
@@ -371,7 +371,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 14,
             Titulo_Campanha = "Sombras de Avalon",
-            Premissa_Campanha = "Intrigas mágicas e traições em um reino inspirado nas lendas arturianas.",
+            Premissa_Campanha = "O reino de Avalon está dividido por intrigas mágicas e traições na corte. Inspirados nas lendas arturianas, vocês são cavaleiros e magos que devem navegar pela política traiçoeira para salvar o reino de uma guerra civil iminente. Preparem-se para um drama político e aventuras épicas, onde a lealdade é testada a cada passo.",
             O_Que_Esperar = "Drama político e aventuras épicas.",
             Imagem_Capa = "/img/campaigns/placeholder14.png",
             Status_Campanha = "Em breve",
@@ -391,7 +391,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 15,
             Titulo_Campanha = "Caçadores do Apocalipse",
-            Premissa_Campanha = "Sobreviventes enfrentam monstros em um mundo pós-apocalíptico.",
+            Premissa_Campanha = "O mundo como o conhecíamos acabou. Agora, vocês são sobreviventes em um cenário pós-apocalíptico infestado de monstros e facções rivais. A cada dia é uma luta pela sobrevivência, exigindo ação intensa e horror de sobrevivência. A busca por suprimentos e um lugar seguro é constante, e a humanidade está à beira da extinção.",
             O_Que_Esperar = "Ação intensa e horror de sobrevivência.",
             Imagem_Capa = "/img/campaigns/placeholder15.png",
             Status_Campanha = "Ativa",
@@ -411,7 +411,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 16,
             Titulo_Campanha = "O Torneio das Mil Lâminas",
-            Premissa_Campanha = "Guerreiros do mundo inteiro se reúnem para disputar um torneio lendário.",
+            Premissa_Campanha = "O Torneio das Mil Lâminas é o evento mais prestigiado do continente, reunindo os guerreiros mais habilidosos em uma competição de vida ou morte. Vocês são competidores com diferentes motivações: glória, riqueza ou a chance de mudar o destino. Preparem-se para combates táticos e o desenvolvimento de personagens, onde apenas o mais forte (ou mais sortudo) sobreviverá.",
             O_Que_Esperar = "Combates táticos e desenvolvimento de personagens.",
             Imagem_Capa = "/img/campaigns/placeholder16.png",
             Status_Campanha = "Ativa",
@@ -431,7 +431,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 17,
             Titulo_Campanha = "Entre Estrelas",
-            Premissa_Campanha = "Exploradores viajam pelo espaço em busca de novos mundos e segredos antigos.",
+            Premissa_Campanha = "A bordo de uma nave estelar, vocês são exploradores viajando pelo espaço em busca de novos mundos habitáveis e segredos de civilizações antigas. A vastidão do cosmos apresenta perigos e dilemas morais, onde cada descoberta pode mudar a compreensão da humanidade sobre o universo. Esta é uma campanha de exploração espacial e descobertas científicas.",
             O_Que_Esperar = "Exploração espacial e dilemas morais.",
             Imagem_Capa = "/img/campaigns/placeholder17.png",
             Status_Campanha = "Em breve",
@@ -451,7 +451,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 18,
             Titulo_Campanha = "Lendas de Yggdrasil",
-            Premissa_Campanha = "Heróis nórdicos enfrentam deuses e monstros para evitar o Ragnarök.",
+            Premissa_Campanha = "O Fimbulvetr chegou, e os sinais do Ragnarök são inegáveis. Vocês são heróis nórdicos, escolhidos pelos próprios deuses para lutar contra gigantes, monstros e as forças do caos. A missão é evitar o crepúsculo dos deuses, exigindo heroísmo, mitologia e combates épicos contra as forças que ameaçam destruir os Nove Mundos.",}],path:
             O_Que_Esperar = "Mitologia, heroísmo e combates épicos.",
             Imagem_Capa = "/img/campaigns/placeholder18.png",
             Status_Campanha = "Ativa",
