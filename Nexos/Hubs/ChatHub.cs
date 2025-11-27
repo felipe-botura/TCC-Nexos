@@ -34,8 +34,9 @@ namespace Nexos.Hubs
             // O nome do grupo será "Campanha_{campanhaId}"
             var user = await _context.Users.FindAsync(userId);
             var userName = user?.Nome ?? "Desconhecido";
+            var userPhotoUrl = string.IsNullOrEmpty(user?.Foto) ? "/img/default-avatar.png" : user.Foto;
 
-            await Clients.Group($"Campanha_{campanhaId}").SendAsync("ReceiveMessage", userId, message, chatMessage.DataHora.ToString("dd/MM HH:mm"), tipoUsuario, userName);
+            await Clients.Group($"Campanha_{campanhaId}").SendAsync("ReceiveMessage", userId, message, chatMessage.DataHora.ToString("dd/MM HH:mm"), tipoUsuario, userName, userPhotoUrl);
         }
 
         public async Task JoinCampanha(int campanhaId)
