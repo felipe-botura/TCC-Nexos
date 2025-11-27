@@ -452,7 +452,7 @@ namespace Nexos.Data
         new CampanhaMesa {
             ID_Campanha = 18,
             Titulo_Campanha = "Lendas de Yggdrasil",
-            Premissa_Campanha = "O Fimbulvetr chegou, e os sinais do Ragnarök são inegáveis. Vocês são heróis nórdicos, escolhidos pelos próprios deuses para lutar contra gigantes, monstros e as forças do caos. A missão é evitar o crepúsculo dos deuses, exigindo heroísmo, mitologia e combates épicos contra as forças que ameaçam destruir os Nove Mundos.",}],path:
+            Premissa_Campanha = "O Fimbulvetr chegou, e os sinais do Ragnarök são inegáveis. Vocês são heróis nórdicos, escolhidos pelos próprios deuses para lutar contra gigantes, monstros e as forças do caos. A missão é evitar o crepúsculo dos deuses, exigindo heroísmo, mitologia e combates épicos contra as forças que ameaçam destruir os Nove Mundos.",
             O_Que_Esperar = "Mitologia, heroísmo e combates épicos.",
             Imagem_Capa = "/img/campaigns/placeholder18.png",
             Status_Campanha = "Ativa",
