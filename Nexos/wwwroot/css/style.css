@@ -453,10 +453,6 @@ hr {
     border-radius: 0px;
 }
 
-.btn i {
-    padding-right: 11px;
-}
-
 .btn:hover {
     color: #fff !important;
     text-decoration: none !important;
@@ -8034,4 +8030,31 @@ div:where(.swal2-icon).swal2-error {
     .newsletter-text {
         font-size: 14px;
     }
+}
+
+.card-placeholder {
+    width: 100%;
+    height: auto;
+    min-height: 200px;       /* controla o tamanho mínimo */
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background-color: #cccccc33; /* leve cinza transparente */
+}
+
+/* qualquer imagem dentro do placeholder */
+.card-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* imagem preenche sem distorcer */
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* se houver texto dentro — fica por cima da imagem */
+.card-placeholder > *:not(img) {
+    position: relative;
+    z-index: 2;
 }

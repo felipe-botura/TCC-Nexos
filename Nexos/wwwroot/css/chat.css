@@ -1,79 +1,106 @@
-/* Estilos específicos para a página de chat */
+/* ============================================
+   BOLHAS DE MENSAGEM
+================================================ */
 
-/* Garante que a bolha de mensagem ocupe apenas o espaço necessário */
 .message-bubble {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-/* Alinhamento para mensagens do próprio usuário (text-end) */
 .text-end {
     align-items: flex-end;
 }
 
-/* Alinhamento para mensagens de outros usuários (text-start) */
 .text-start {
     align-items: flex-start;
 }
 
-/* Estilo para a bolha de mensagem do próprio usuário (theme-bg) */
 .theme-bg {
-    background-color: #f067ff !important; /* Cor tema do projeto */
+    background-color: #f067ff !important;
     color: #fff !important;
     border-radius: 15px 15px 0 15px !important;
 }
 
-/* Estilo para a bolha de mensagem de outros usuários (white-bg) */
 .white-bg {
     background-color: #fff !important;
-    color: #16161a !important; /* Cor black-color do projeto */
+    color: #16161a !important;
     border-radius: 15px 15px 15px 0 !important;
 }
 
-/* Estilo para o container do chat */
+/* ============================================
+   CONTAINER DO CHAT
+================================================ */
+
 #chat-container {
     border-radius: 10px;
 }
 
-/* Estilo para o grupo de input do chat */
+/* ============================================
+   CAMPO DE INPUT + BOTÃO
+================================================ */
+
 .chat-input-group {
+    display: flex !important;
+    align-items: center !important;
+    background-color: #fff;
+    border: 1px solid #f067ff;
     border-radius: 30px;
-    overflow: hidden; /* Garante que os filhos respeitem o border-radius */
-    background-color: #fff; /* Fundo branco conforme a imagem */
-    border: 1px solid #f067ff; /* Borda da cor tema */
+    overflow: hidden;
+    height: 55px; /* Altura da barra */
 }
 
-/* Estilo para o input de mensagem */
-.chat-input-group #messageInput {
-    border: none !important; /* Remove a borda do input */
-    box-shadow: none !important; /* Remove a sombra de foco */
-    background-color: #fff !important; /* Fundo branco */
-    color: #16161a !important; /* Cor do texto */
-    padding-left: 20px;
-}
-
-/* Estilo para o botão de envio */
-.chat-input-group .chat-send-btn {
-    background-color: #fff !important; /* Fundo branco */
-    color: #f067ff !important; /* Cor do ícone */
+/* INPUT */
+#messageInput {
+    flex: 1 1 auto;
     border: none !important;
-    padding: 0 15px;
-    font-size: 1.5rem;
-    line-height: 1;
-    transition: color 0.2s;
-}
-
-.chat-input-group .chat-send-btn:hover {
-    color: #2D0A31 !important; /* Cor tema mais escura no hover */
-}
-.form-control{
+    box-shadow: none !important;
+    background-color: #fff !important;
+    color: #16161a !important;
+    padding-left: 20px;
+    padding-right: 10px;
+    height: 100%;
     font-size: 1.7rem;
 }
-.boxed-btn{
+
+/* ============================================
+   BOTÃO DE ENVIAR
+================================================ */
+
+.chat-send-btn {
+    display: flex !important;            /* Mantém botão como flex */
+    align-items: center !important;      /* Centraliza verticalmente */
+    justify-content: center !important;  /* Centraliza horizontalmente */
+    width: 60px !important;              /* Ajuste do tamanho do botão */
+    height: 100% !important;             /* Preenche a altura */
+    padding: 0 !important;               /* Remove padding do Bootstrap */
+    border: none !important;
+    background: linear-gradient(45deg, #d86dff, #8e5cff) !important;
     color: #fff !important;
+    font-size: 1.6rem !important;
+    line-height: 1 !important;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 0 !important;         /* Evita distorções */
 }
 
-#messageInput{
-    height: max-content;
+/* Remove efeitos padrão do bootstrap */
+.chat-send-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================
+   ÍCONE DO BOTÃO
+================================================ */
+
+.chat-send-btn i,
+.chat-send-btn svg {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    font-size: 1.3rem !important;        /* Ajuste fino do ícone */
+    vertical-align: middle !important;
+    transform: translateY(0) !important; /* Ajuste vertical fino */
 }

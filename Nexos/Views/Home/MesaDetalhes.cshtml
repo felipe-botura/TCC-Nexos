@@ -36,7 +36,9 @@
                 <h4 class="fw-bold mb-2">Game Master: @Model.Mestre.Nome</h4>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-outline-light">Contatar GM</button>
+               <a asp-controller="Chat" asp-action="Campanha" asp-route-id="@Model.ID_Campanha" class="btn btn-success btn-lg px-5 py-3 rounded-pill">
+	                    Acessar Chat
+	                </a>
             </div>
         </div>
     </div>

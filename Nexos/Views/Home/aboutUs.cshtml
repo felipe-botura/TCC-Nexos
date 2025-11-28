@@ -11,7 +11,11 @@
                 Explorar Mesas
             </button>
         </div>
-        <div class="hero-image" aria-label="Imagem ilustrativa temática de jogos de RPG de mesa" role="img" aria-hidden="true"></div>
+
+        <!-- HERO IMAGE COMO SLOT DE IMAGEM -->
+        <div class="hero-image image-slot">
+            <img src="~/img/fotos/6.jpeg" alt="Imagem ilustrativa sobre RPG">
+        </div>
     </section>
 
     <section class="missao-section" id="sobre" aria-labelledby="missao-title">
@@ -23,6 +27,7 @@
                 Foi com esse pensamento que decidimos criar o <strong>Nexos</strong>!
             </p>
         </div>
+
         <div class="missao-cards" role="list">
             <article class="card" role="listitem" tabindex="0" aria-labelledby="card1-title">
                 <div class="card-content">
@@ -31,6 +36,7 @@
                         sistemas de RPG, e com pessoas que realmente gostam disso”</p>
                 </div>
             </article>
+
             <article class="card" role="listitem" tabindex="0" aria-labelledby="card2-title">
                 <div class="card-content">
                     <h3 id="card2-title">Crescendo juntos</h3>
@@ -40,6 +46,7 @@
                     </p>
                 </div>
             </article>
+
             <article class="card" role="listitem" tabindex="0" aria-labelledby="card3-title">
                 <div class="card-content">
                     <h3 id="card3-title">Um espaço para as aventuras</h3>
@@ -55,68 +62,98 @@
     <section class="conversa-section" id="jogadores" aria-labelledby="conversa-title">
         <h2 id="conversa-title">Junte-se à conversa</h2>
         <p class="subtitle">Veja o que nossa comunidade vêm dizendo</p>
+
         <div class="conversa-grid" role="list">
+
+            <!-- POST 1 -->
             <article class="post-card" role="listitem" tabindex="0" aria-label="Postagem de Bob, 4 horas atrás">
                 <header class="post-header">
-                    <div class="avatar" aria-hidden="true"></div>
+                    <div class="avatar image-slot">
+                    </div>
+
                     <div>
                         <div class="user-info">Bob</div>
                         <div class="post-time">4h atrás</div>
                     </div>
+
                     <div class="menu" aria-hidden="true" title="Mais opções" tabindex="-1">⋯</div>
                 </header>
-                <div class="post-image" aria-label="Imagem ilustrativa do post de Bob" role="img" aria-hidden="true"></div>
-                <div class="post-content">
+
+                <div class="post-image image-slot">
+                    <img src="~/img/fotos/1.jpeg" alt="Imagem do post de Bob">
+                </div>
+
+                <div class="post-content" style="background-color: #2D0A31;">
                     Consegui achar um pessoal muito bom aqui, na próxima sessão a gente vai conquistar o fim da
                     Dungeon juntos!
                 </div>
-                <div class="post-tags" aria-label="Tags: Experiente, Trabalho em equipe">
+
+                <div class="post-tags" style="background-color: #2D0A31;">
                     <span class="post-tag">Experiente</span>
                     <span class="post-tag">Trabalho em equipe</span>
                 </div>
             </article>
 
+            <!-- POST 2 -->
             <article class="post-card" role="listitem" tabindex="0" aria-label="Postagem de Alice, 2 horas atrás">
                 <header class="post-header">
-                    <div class="avatar" aria-hidden="true"></div>
+                    <div class="avatar image-slot">
+                    </div>
+
                     <div>
                         <div class="user-info">Alice</div>
                         <div class="post-time">2h atrás</div>
                     </div>
+
                     <div class="menu" aria-hidden="true" title="Mais opções" tabindex="-1">⋯</div>
                 </header>
-                <div class="post-image" aria-label="Imagem ilustrativa do post de Alice" role="img" aria-hidden="true"></div>
-                <div class="post-content">
-                    Nexos me fez encontrar muito rápido a minha primeira campanha!
+
+                <div class="post-image image-slot" style="background-color: #2D0A31;">
+                    <img src="~/img/fotos/2.jpeg" alt="Imagem do post de Alice">
                 </div>
-                <div class="post-tags" aria-label="Tags: Novo Player, Animado">
+
+                <div class="post-content" style="background-color: #2D0A31;">
+                    Nexos me fez encontrar muito rápido a minha primeira campanha!
+
+                    Estou muito feliz!
+                </div>
+
+                <div class="post-tags" style="background-color: #2D0A31;">
                     <span class="post-tag">Novo Player</span>
                     <span class="post-tag">Animado</span>
                 </div>
             </article>
+
         </div>
     </section>
 
     <section class="feedback-section" id="feedback" aria-labelledby="feedback-title">
         <div class="feedback-container">
+
             <header class="feedback-header">
                 <h2 id="feedback-title">O que os nossos membros dizem</h2>
                 <p>Feedback da Comunidade</p>
             </header>
+
             <div class="feedback-list" role="list">
+
                 <article class="feedback-item" role="listitem" tabindex="0" aria-label="Depoimento de Charlie">
-                    <div class="feedback-avatar" aria-hidden="true"></div>
+                    <div class="feedback-avatar image-slot">
+                    </div>
                     <p class="feedback-content">
                         Nexos é minha plataforma preferida para encontrar novos grupos. O ambiente é incrivelmente
                         acolhedor!
                     </p>
                 </article>
+
                 <article class="feedback-item" role="listitem" tabindex="0" aria-label="Depoimento de Dana">
-                    <div class="feedback-avatar" aria-hidden="true"></div>
+                    <div class="feedback-avatar image-slot">
+                    </div>
                     <p class="feedback-content">
                         Adoro como é fácil conectar-se com fãs de RPG que pensam como eu. Recomendo muito!
                     </p>
                 </article>
+
             </div>
         </div>
     </section>
