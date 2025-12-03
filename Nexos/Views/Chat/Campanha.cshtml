@@ -26,7 +26,7 @@
                         <div class="d-flex @(isMine ? "justify-content-end" : "justify-content-start") mb-2">
                             @if (!isMine)
                             {
-                                <img src="@(string.IsNullOrEmpty(mensagem.User.Foto) ? "/img/default-avatar.png" : mensagem.User.Foto)" alt="Avatar" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                <img src="@(string.IsNullOrEmpty(mensagem.User.Foto) ? "/img/usuarios/no-photo.png" : mensagem.User.Foto)" alt="Avatar" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
                             }
                             <div class="message-content @alignClass">
                                 <small class="text-muted" style="color: #ccc !important;">@role - @mensagem.User.Nome (@mensagem.DataHora.ToString("dd/MM HH:mm"))</small>
@@ -36,7 +36,7 @@
                             </div>
                             @if (isMine)
                             {
-                                <img src="@(string.IsNullOrEmpty(mensagem.User.Foto) ? "/img/default-avatar.png" : mensagem.User.Foto)" alt="Avatar" class="rounded-circle ms-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                <img src="@(string.IsNullOrEmpty(mensagem.User.Foto) ? "/img/usuarios/no-photo.png" : mensagem.User.Foto)" alt="Avatar" class="rounded-circle ms-2" style="width: 40px; height: 40px; object-fit: cover;">
                             }
                         </div>
                     }
